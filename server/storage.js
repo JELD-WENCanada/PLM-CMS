@@ -165,6 +165,16 @@ function sanitizeDatabaseUrl(rawUrl) {
   }
 }
 
+function getDatabaseIdentity(rawUrl) {
+  try {
+    const url = new URL(rawUrl);
+    const dbName = (url.pathname || "/").replace(/^\//, "") || "postgres";
+    return `${decodeURIComponent(url.username || "unknown")}@${url.hostname}:${url.port || "5432"}/${dbName}`;
+  } catch (_error) {
+    return "unknown-database-target";
+  }
+}
+
 function getPgPool() {
   if (!pgPool) {
     const sslMode = String(process.env.PGSSLMODE || "").toLowerCase();
@@ -284,7 +294,14 @@ async function readDb() {
   try {
     let parsed;
     if (shouldUsePostgresStorage()) {
-      parsed = await readDbFromPostgres();
+      try {
+        parsed = await readDbFromPostgres();
+      } catch (error) {
+        const target = getDatabaseIdentity(process.env.DATABASE_URL || "");
+        throw new Error(
+          `Postgres connection failed for ${target}. ${error.message || ""}`.trim()
+        );
+      }
     } else if (shouldUseBlobStorage()) {
       parsed = await readDbFromBlob();
     } else {
@@ -307,8 +324,9 @@ async function writeDb(db) {
       await writeDbToPostgres(db);
       return;
     } catch (error) {
+      const target = getDatabaseIdentity(process.env.DATABASE_URL || "");
       throw new Error(
-        `Postgres storage write failed. Check DATABASE_URL and database access. ${error.message || ""}`.trim()
+        `Postgres storage write failed for ${target}. Check DATABASE_URL and database access. ${error.message || ""}`.trim()
       );
     }
   }
