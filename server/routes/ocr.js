@@ -17,7 +17,13 @@ router.post("/business-card", upload.single("cardImage"), async (req, res) => {
     const parsed = await extractBusinessCardDetails(req.file.buffer);
     return res.json(parsed);
   } catch (error) {
-    return res.status(500).json({ error: "Failed to process card image" });
+    const message = String(error?.message || "Failed to process card image");
+    const isTimeout = /timed out|timeout/i.test(message);
+    const isFileTooLarge = /file too large/i.test(message);
+    const status = isFileTooLarge ? 413 : isTimeout ? 504 : 500;
+
+    console.error("OCR extraction failed:", message);
+    return res.status(status).json({ error: message });
   }
 });
 
