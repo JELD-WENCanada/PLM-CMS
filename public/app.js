@@ -1083,6 +1083,11 @@ els.ocrForm.addEventListener("submit", async (event) => {
   formData.append("cardImage", els.cardImage.files[0]);
   const extractBtn = els.ocrForm.querySelector('button[type="submit"]');
   const originalLabel = extractBtn ? extractBtn.textContent : "";
+  const ocrTimeoutMs = 30000;
+  const abortController = new AbortController();
+  const abortTimer = setTimeout(() => {
+    abortController.abort();
+  }, ocrTimeoutMs);
 
   try {
     if (extractBtn) {
@@ -1093,6 +1098,7 @@ els.ocrForm.addEventListener("submit", async (event) => {
     const response = await fetch("/api/ocr/business-card", {
       method: "POST",
       body: formData,
+      signal: abortController.signal,
     });
 
     const raw = await response.text();
@@ -1148,8 +1154,13 @@ els.ocrForm.addEventListener("submit", async (event) => {
     await selectContact(state.selectedId);
     showToast("Business card extracted and contact saved", "success");
   } catch (error) {
-    showToast(error.message, "error");
+    if (error.name === "AbortError") {
+      showToast("Extraction timed out. Try a clearer image or crop tighter and retry.", "error");
+    } else {
+      showToast(error.message, "error");
+    }
   } finally {
+    clearTimeout(abortTimer);
     if (extractBtn) {
       extractBtn.disabled = false;
       extractBtn.textContent = originalLabel || "Extract Details";
