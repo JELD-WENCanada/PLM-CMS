@@ -9,8 +9,12 @@ const {
 const router = express.Router();
 
 router.get("/", async (_req, res) => {
-  const users = await listUsers();
-  res.json({ users });
+  try {
+    const users = await listUsers();
+    return res.json({ users });
+  } catch (error) {
+    return res.status(500).json({ error: error.message || "Failed to load users" });
+  }
 });
 
 router.put("/:id", async (req, res) => {

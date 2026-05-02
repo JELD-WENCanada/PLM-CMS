@@ -1129,8 +1129,9 @@ els.ocrForm.addEventListener("submit", async (event) => {
     els.userPassword.disabled = false;
     els.confirmUserPassword.disabled = false;
     els.continueBtn.disabled = false;
-  } catch (_error) {
-    showUserLoadFailure("Could not load team members. Start the app server and refresh.");
+  } catch (error) {
+    const reason = error?.message ? ` (${error.message})` : "";
+    showUserLoadFailure(`Could not load team members${reason}`);
     return;
   }
   if (mobileMediaQuery.matches) {
