@@ -8,15 +8,24 @@ const usersRouter = require("./routes/users");
 
 const app = express();
 
+function mountApiRoutes(prefix = "") {
+  app.use(`${prefix}/contacts`, contactsRouter);
+  app.use(`${prefix}/ocr`, ocrRouter);
+  app.use(`${prefix}/users`, usersRouter);
+}
+
 app.use(cors());
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/contacts", contactsRouter);
-app.use("/api/ocr", ocrRouter);
-app.use("/api/users", usersRouter);
+mountApiRoutes("/api");
+mountApiRoutes("");
 
 app.get("/api/health", (_req, res) => {
+  res.json({ ok: true });
+});
+
+app.get("/health", (_req, res) => {
   res.json({ ok: true });
 });
 
