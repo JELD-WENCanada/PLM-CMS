@@ -595,6 +595,93 @@ function loadImageFromObjectUrl(objectUrl) {
   });
 }
 
+function findFirstMatch(text, patterns) {
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (match && match[1]) {
+      return match[1].trim();
+    }
+  }
+  return "";
+}
+
+function parseBusinessCardText(rawText) {
+  const text = String(rawText || "").replace(/\r/g, "");
+  const lines = text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const name = lines.find((line) => /^[A-Za-z][A-Za-z .'-]{2,}$/.test(line)) || "";
+  const company =
+    lines.find((line) => /(inc|llc|ltd|group|solutions|technologies|consulting|studio|labs)/i.test(line)) || "";
+
+  return {
+    rawText: text,
+    fields: {
+      name,
+      company,
+      title: "",
+      email: findFirstMatch(text, [/([\w.+-]+@[\w.-]+\.[A-Za-z]{2,})/]),
+      phone: findFirstMatch(text, [/(\+?\d[\d\s().-]{7,}\d)/]),
+      website: findFirstMatch(text, [/(https?:\/\/[^\s]+)/i, /((?:www\.)?[^\s]+\.[A-Za-z]{2,})(?!@)/i]),
+      linkedIn: findFirstMatch(text, [/(https?:\/\/www\.linkedin\.com\/[^\s]+)/i, /(linkedin\.com\/[^\s]+)/i]),
+    },
+  };
+}
+
+function applyOcrFields(data) {
+  const fields = data.fields || {};
+
+  if (mobileMediaQuery.matches) {
+    setMobileView("details");
+  } else {
+    setContactPanelsVisible(true);
+  }
+
+  state.selectedId = null;
+  els.contactId.value = "";
+
+  if (fields.name) els.name.value = fields.name;
+  if (fields.company) els.company.value = fields.company;
+  if (fields.title) els.title.value = fields.title;
+  if (fields.email) els.email.value = fields.email;
+  if (fields.phone) els.phone.value = fields.phone;
+  if (fields.website) els.website.value = fields.website;
+  if (fields.linkedIn) els.linkedIn.value = fields.linkedIn;
+
+  els.ocrRaw.textContent = data.rawText || "No text found";
+}
+
+async function saveExtractedContactOrExplain() {
+  if (!els.name.value.trim()) {
+    showToast("No contact name detected. Review details, add name, then tap Save Contact.", "error");
+    return;
+  }
+
+  const payload = contactToPayload();
+  const saved = await api("/api/contacts", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+  state.selectedId = saved.contact.id;
+  await loadContacts();
+  await selectContact(state.selectedId);
+  showToast("Business card extracted and contact saved", "success");
+}
+
+async function runClientSideOcr(imageFile) {
+  if (!window.Tesseract) {
+    throw new Error("Local OCR library is not available");
+  }
+
+  const result = await window.Tesseract.recognize(imageFile, "eng", {
+    logger: () => {},
+  });
+
+  return parseBusinessCardText(result?.data?.text || "");
+}
+
 async function prepareOcrImage(file) {
   if (!(file instanceof File) || !file.type.startsWith("image/")) {
     return file;
@@ -1178,47 +1265,27 @@ els.ocrForm.addEventListener("submit", async (event) => {
       );
     }
 
-    const fields = data.fields || {};
-
-    if (mobileMediaQuery.matches) {
-      setMobileView("details");
-    } else {
-      setContactPanelsVisible(true);
-    }
-
-    // OCR capture starts a new contact draft so existing records are not overwritten.
-    state.selectedId = null;
-    els.contactId.value = "";
-
-    if (fields.name) els.name.value = fields.name;
-    if (fields.company) els.company.value = fields.company;
-    if (fields.title) els.title.value = fields.title;
-    if (fields.email) els.email.value = fields.email;
-    if (fields.phone) els.phone.value = fields.phone;
-    if (fields.website) els.website.value = fields.website;
-    if (fields.linkedIn) els.linkedIn.value = fields.linkedIn;
-
-    els.ocrRaw.textContent = data.rawText || "No text found";
-
-    if (!els.name.value.trim()) {
-      showToast("No contact name detected. Review details, add name, then tap Save Contact.", "error");
-      return;
-    }
-
-    const payload = contactToPayload();
-    const saved = await api("/api/contacts", {
-      method: "POST",
-      body: JSON.stringify(payload),
-    });
-    state.selectedId = saved.contact.id;
-    await loadContacts();
-    await selectContact(state.selectedId);
-    showToast("Business card extracted and contact saved", "success");
+    applyOcrFields(data);
+    await saveExtractedContactOrExplain();
   } catch (error) {
-    if (error.name === "AbortError") {
-      showToast("Extraction timed out. Try a clearer image or crop tighter and retry.", "error");
+    const message = String(error?.message || "");
+    const shouldTryLocalOcr =
+      error.name === "AbortError" || /timed out|failed to process card image/i.test(message);
+
+    if (shouldTryLocalOcr) {
+      try {
+        showToast("Server OCR timed out. Trying on-device OCR...", "info");
+        if (extractBtn) {
+          extractBtn.textContent = "Extracting (local)...";
+        }
+        const fallbackData = await runClientSideOcr(optimizedImage);
+        applyOcrFields(fallbackData);
+        await saveExtractedContactOrExplain();
+      } catch (fallbackError) {
+        showToast(fallbackError.message || "Local OCR failed", "error");
+      }
     } else {
-      showToast(error.message, "error");
+      showToast(message || "OCR failed", "error");
     }
   } finally {
     clearTimeout(abortTimer);
