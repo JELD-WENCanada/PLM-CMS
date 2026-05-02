@@ -1,5 +1,57 @@
 const Tesseract = require("tesseract.js");
 
+const OCR_TIMEOUT_MS = Number(process.env.OCR_TIMEOUT_MS || 25000);
+let workerPromise = null;
+let ocrQueue = Promise.resolve();
+
+function withTimeout(promise, timeoutMs, message) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error(message));
+    }, timeoutMs);
+
+    promise
+      .then((value) => {
+        clearTimeout(timer);
+        resolve(value);
+      })
+      .catch((error) => {
+        clearTimeout(timer);
+        reject(error);
+      });
+  });
+}
+
+async function getWorker() {
+  if (!workerPromise) {
+    workerPromise = (async () => {
+      const worker = await Tesseract.createWorker("eng", 1, {
+        logger: () => {},
+      });
+
+      await worker.setParameters({
+        // Single uniform text block is usually faster for business-card style OCR.
+        tessedit_pageseg_mode: "6",
+      });
+
+      return worker;
+    })();
+  }
+
+  return workerPromise;
+}
+
+async function runOcr(imageInput) {
+  const worker = await getWorker();
+  return worker.recognize(imageInput);
+}
+
+function runOcrQueued(imageInput) {
+  const job = ocrQueue.then(() => runOcr(imageInput));
+  ocrQueue = job.catch(() => {});
+  return job;
+}
+
 function findFirstMatch(text, patterns) {
   for (const pattern of patterns) {
     const match = text.match(pattern);
@@ -83,9 +135,11 @@ function parseBusinessCardText(rawText) {
 }
 
 async function extractBusinessCardDetails(imageInput) {
-  const result = await Tesseract.recognize(imageInput, "eng", {
-    logger: () => {},
-  });
+  const result = await withTimeout(
+    runOcrQueued(imageInput),
+    OCR_TIMEOUT_MS,
+    "OCR timed out. Try a tighter crop focused on text."
+  );
 
   return parseBusinessCardText(result?.data?.text || "");
 }
