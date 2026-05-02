@@ -143,6 +143,10 @@ function shouldUseBlobStorage() {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 
+function isReadOnlyFsError(error) {
+  return error && ["EROFS", "EPERM", "EACCES"].includes(error.code);
+}
+
 async function readSeedDb() {
   try {
     const raw = await fs.readFile(DB_PATH, "utf-8");
@@ -204,22 +208,31 @@ async function readDb() {
 }
 
 async function writeDb(db) {
-  try {
-    if (shouldUseBlobStorage()) {
+  const payload = JSON.stringify(db, null, 2);
+
+  if (shouldUseBlobStorage()) {
+    try {
       await writeDbToBlob(db);
       return;
-    }
-
-    await fs.writeFile(DB_PATH, JSON.stringify(db, null, 2), "utf-8");
-  } catch (error) {
-    if (
-      process.env.VERCEL ||
-      error.code === "EROFS" ||
-      error.code === "EPERM" ||
-      error.code === "EACCES"
-    ) {
+    } catch (error) {
       throw new Error(
-        "This Vercel deployment is read-only. First-time password setup and data changes need persistent storage instead of local JSON files."
+        `Blob storage write failed. Check BLOB_READ_WRITE_TOKEN and Blob store access. ${error.message || ""}`.trim()
+      );
+    }
+  }
+
+  if (process.env.VERCEL) {
+    throw new Error(
+      "BLOB_READ_WRITE_TOKEN is missing in Vercel. Connect a Blob store to this project and redeploy."
+    );
+  }
+
+  try {
+    await fs.writeFile(DB_PATH, payload, "utf-8");
+  } catch (error) {
+    if (isReadOnlyFsError(error)) {
+      throw new Error(
+        "Local storage path is read-only. Configure writable storage before saving changes."
       );
     }
     throw error;
