@@ -613,8 +613,39 @@ function normalizeOcrLine(line) {
     .trim();
 }
 
+function stripLabelPrefix(line, labelRegex) {
+  const match = line.match(labelRegex);
+  if (!match) {
+    return "";
+  }
+
+  return normalizeOcrLine(line.slice(match[0].length));
+}
+
+function findLabeledField(lines, labelRegexes) {
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    for (const regex of labelRegexes) {
+      const value = stripLabelPrefix(line, regex);
+      if (value) {
+        return value;
+      }
+
+      // Some cards put the value on the next line after the label.
+      if (regex.test(line) && i + 1 < lines.length) {
+        const next = normalizeOcrLine(lines[i + 1]);
+        if (next && !isContactDetailLine(next)) {
+          return next;
+        }
+      }
+    }
+  }
+
+  return "";
+}
+
 function isLikelyTitle(line) {
-  return /(manager|director|engineer|specialist|sales|marketing|owner|president|vp|executive|consultant|coordinator|assistant)/i.test(
+  return /(manager|director|engineer|specialist|sales|marketing|owner|president|vp|executive|consultant|coordinator|assistant|account|lead|officer)/i.test(
     line
   );
 }
@@ -650,6 +681,16 @@ function parseBusinessCardText(rawText) {
   const linkedIn = findFirstMatch(text, [/(https?:\/\/www\.linkedin\.com\/[^\s]+)/i, /(linkedin\.com\/[^\s]+)/i]);
 
   const nonDetailLines = lines.filter((line) => !isContactDetailLine(line));
+  const labeledName = findLabeledField(nonDetailLines, [
+    /^(?:name|contact|attn|attention|representative|rep)\s*[:\-]\s*/i,
+  ]);
+  const labeledCompany = findLabeledField(nonDetailLines, [
+    /^(?:company|organization|org|business|exhibitor|vendor|sponsor)\s*[:\-]\s*/i,
+  ]);
+  const labeledTitle = findLabeledField(nonDetailLines, [
+    /^(?:title|role|position|job|designation|department)\s*[:\-]\s*/i,
+  ]);
+
   const nameCandidates = nonDetailLines.filter((line) => {
     const looksLikeWords = /^[A-Za-z][A-Za-z .'-]{2,}$/.test(line);
     const words = line.split(" ").filter(Boolean);
@@ -657,7 +698,7 @@ function parseBusinessCardText(rawText) {
     return looksLikeWords && validWordCount && !isLikelyCompany(line) && !isLikelyTitle(line);
   });
 
-  let name = nameCandidates[0] || "";
+  let name = labeledName || nameCandidates[0] || "";
   if (!name && email) {
     const localPart = email.split("@")[0] || "";
     const inferred = localPart
@@ -671,7 +712,7 @@ function parseBusinessCardText(rawText) {
   }
 
   const companyCandidates = nonDetailLines.filter((line) => isLikelyCompany(line));
-  let company = companyCandidates[0] || "";
+  let company = labeledCompany || companyCandidates[0] || "";
   if (!company) {
     const upperish = nonDetailLines.find((line) => {
       const hasLetters = /[A-Za-z]/.test(line);
@@ -681,7 +722,7 @@ function parseBusinessCardText(rawText) {
     company = upperish || "";
   }
 
-  const title = nonDetailLines.find((line) => isLikelyTitle(line)) || "";
+  const title = labeledTitle || nonDetailLines.find((line) => isLikelyTitle(line)) || "";
 
   return {
     rawText: text,
