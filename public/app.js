@@ -605,27 +605,94 @@ function findFirstMatch(text, patterns) {
   return "";
 }
 
+function normalizeOcrLine(line) {
+  return String(line || "")
+    .replace(/^[|:;.,\-\s]+/, "")
+    .replace(/[|:;.,\-\s]+$/, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isLikelyTitle(line) {
+  return /(manager|director|engineer|specialist|sales|marketing|owner|president|vp|executive|consultant|coordinator|assistant)/i.test(
+    line
+  );
+}
+
+function isLikelyCompany(line) {
+  return /(inc\.?|llc|ltd\.?|corp\.?|group|solutions|technologies|consulting|studio|labs|company|co\.?|limited)/i.test(
+    line
+  );
+}
+
+function isContactDetailLine(line) {
+  return /@|www\.|https?:\/\/|linkedin|\+?\d[\d\s().-]{7,}\d/i.test(line);
+}
+
+function toTitleCaseName(line) {
+  return line
+    .split(" ")
+    .map((part) => part ? part[0].toUpperCase() + part.slice(1).toLowerCase() : "")
+    .join(" ");
+}
+
 function parseBusinessCardText(rawText) {
   const text = String(rawText || "").replace(/\r/g, "");
   const lines = text
     .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean);
+    .map(normalizeOcrLine)
+    .filter(Boolean)
+    .slice(0, 24);
 
-  const name = lines.find((line) => /^[A-Za-z][A-Za-z .'-]{2,}$/.test(line)) || "";
-  const company =
-    lines.find((line) => /(inc|llc|ltd|group|solutions|technologies|consulting|studio|labs)/i.test(line)) || "";
+  const email = findFirstMatch(text, [/([\w.+-]+@[\w.-]+\.[A-Za-z]{2,})/]);
+  const phone = findFirstMatch(text, [/(\+?\d[\d\s().-]{7,}\d)/]);
+  const website = findFirstMatch(text, [/(https?:\/\/[^\s]+)/i, /((?:www\.)?[^\s]+\.[A-Za-z]{2,})(?!@)/i]);
+  const linkedIn = findFirstMatch(text, [/(https?:\/\/www\.linkedin\.com\/[^\s]+)/i, /(linkedin\.com\/[^\s]+)/i]);
+
+  const nonDetailLines = lines.filter((line) => !isContactDetailLine(line));
+  const nameCandidates = nonDetailLines.filter((line) => {
+    const looksLikeWords = /^[A-Za-z][A-Za-z .'-]{2,}$/.test(line);
+    const words = line.split(" ").filter(Boolean);
+    const validWordCount = words.length >= 2 && words.length <= 4;
+    return looksLikeWords && validWordCount && !isLikelyCompany(line) && !isLikelyTitle(line);
+  });
+
+  let name = nameCandidates[0] || "";
+  if (!name && email) {
+    const localPart = email.split("@")[0] || "";
+    const inferred = localPart
+      .replace(/[._-]+/g, " ")
+      .replace(/\d+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (inferred.split(" ").length >= 2) {
+      name = toTitleCaseName(inferred);
+    }
+  }
+
+  const companyCandidates = nonDetailLines.filter((line) => isLikelyCompany(line));
+  let company = companyCandidates[0] || "";
+  if (!company) {
+    const upperish = nonDetailLines.find((line) => {
+      const hasLetters = /[A-Za-z]/.test(line);
+      const upperCount = (line.match(/[A-Z]/g) || []).length;
+      return hasLetters && upperCount >= 3 && !line.includes("@") && !isLikelyTitle(line);
+    });
+    company = upperish || "";
+  }
+
+  const title = nonDetailLines.find((line) => isLikelyTitle(line)) || "";
 
   return {
     rawText: text,
     fields: {
-      name,
-      company,
-      title: "",
-      email: findFirstMatch(text, [/([\w.+-]+@[\w.-]+\.[A-Za-z]{2,})/]),
-      phone: findFirstMatch(text, [/(\+?\d[\d\s().-]{7,}\d)/]),
-      website: findFirstMatch(text, [/(https?:\/\/[^\s]+)/i, /((?:www\.)?[^\s]+\.[A-Za-z]{2,})(?!@)/i]),
-      linkedIn: findFirstMatch(text, [/(https?:\/\/www\.linkedin\.com\/[^\s]+)/i, /(linkedin\.com\/[^\s]+)/i]),
+      name: normalizeOcrLine(name),
+      company: normalizeOcrLine(company),
+      title: normalizeOcrLine(title),
+      email,
+      phone,
+      website,
+      linkedIn,
     },
   };
 }
@@ -1226,69 +1293,22 @@ els.ocrForm.addEventListener("submit", async (event) => {
     return;
   }
 
-  const formData = new FormData();
   const optimizedImage = await prepareOcrImage(els.cardImage.files[0]);
-  formData.append("cardImage", optimizedImage);
   const extractBtn = els.ocrForm.querySelector('button[type="submit"]');
   const originalLabel = extractBtn ? extractBtn.textContent : "";
-  const ocrTimeoutMs = 30000;
-  const abortController = new AbortController();
-  const abortTimer = setTimeout(() => {
-    abortController.abort();
-  }, ocrTimeoutMs);
 
   try {
     if (extractBtn) {
       extractBtn.disabled = true;
-      extractBtn.textContent = "Extracting...";
+      extractBtn.textContent = "Extracting (local)...";
     }
 
-    const response = await fetch("/api/ocr/business-card", {
-      method: "POST",
-      body: formData,
-      signal: abortController.signal,
-    });
-
-    const raw = await response.text();
-    let data = {};
-    if (raw) {
-      try {
-        data = JSON.parse(raw);
-      } catch (_error) {
-        data = {};
-      }
-    }
-
-    if (!response.ok) {
-      throw new Error(
-        data.error || raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() || "Failed to process image"
-      );
-    }
-
+    const data = await runClientSideOcr(optimizedImage);
     applyOcrFields(data);
     await saveExtractedContactOrExplain();
   } catch (error) {
-    const message = String(error?.message || "");
-    const shouldTryLocalOcr =
-      error.name === "AbortError" || /timed out|failed to process card image/i.test(message);
-
-    if (shouldTryLocalOcr) {
-      try {
-        showToast("Server OCR timed out. Trying on-device OCR...", "info");
-        if (extractBtn) {
-          extractBtn.textContent = "Extracting (local)...";
-        }
-        const fallbackData = await runClientSideOcr(optimizedImage);
-        applyOcrFields(fallbackData);
-        await saveExtractedContactOrExplain();
-      } catch (fallbackError) {
-        showToast(fallbackError.message || "Local OCR failed", "error");
-      }
-    } else {
-      showToast(message || "OCR failed", "error");
-    }
+    showToast(error.message || "Local OCR failed", "error");
   } finally {
-    clearTimeout(abortTimer);
     if (extractBtn) {
       extractBtn.disabled = false;
       extractBtn.textContent = originalLabel || "Extract Details";
