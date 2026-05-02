@@ -154,9 +154,17 @@ let pgReady = false;
 
 function getPgPool() {
   if (!pgPool) {
+    const sslMode = String(process.env.PGSSLMODE || "").toLowerCase();
+    const disableSsl = sslMode === "disable";
+    const noVerify =
+      sslMode === "no-verify" ||
+      process.env.PGSSL_NO_VERIFY === "1" ||
+      process.env.PGSSL_NO_VERIFY === "true" ||
+      process.env.NODE_ENV === "production";
+
     pgPool = new Pool({
       connectionString: process.env.DATABASE_URL,
-      ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : undefined,
+      ssl: disableSsl ? false : { rejectUnauthorized: !noVerify },
     });
   }
   return pgPool;
