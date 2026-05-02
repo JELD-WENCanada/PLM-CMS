@@ -152,6 +152,19 @@ function shouldUsePostgresStorage() {
 let pgPool = null;
 let pgReady = false;
 
+function sanitizeDatabaseUrl(rawUrl) {
+  try {
+    const url = new URL(rawUrl);
+    url.searchParams.delete("sslmode");
+    url.searchParams.delete("sslcert");
+    url.searchParams.delete("sslkey");
+    url.searchParams.delete("sslrootcert");
+    return url.toString();
+  } catch (_error) {
+    return rawUrl;
+  }
+}
+
 function getPgPool() {
   if (!pgPool) {
     const sslMode = String(process.env.PGSSLMODE || "").toLowerCase();
@@ -163,7 +176,7 @@ function getPgPool() {
       process.env.NODE_ENV === "production";
 
     pgPool = new Pool({
-      connectionString: process.env.DATABASE_URL,
+      connectionString: sanitizeDatabaseUrl(process.env.DATABASE_URL),
       ssl: disableSsl ? false : { rejectUnauthorized: !noVerify },
     });
   }
