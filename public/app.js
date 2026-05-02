@@ -644,6 +644,39 @@ function findLabeledField(lines, labelRegexes) {
   return "";
 }
 
+function extractFromExhibitorLine(lines) {
+  const exhibitorLine = lines.find((line) => /\bexhibi\w*\b/i.test(line));
+  if (!exhibitorLine) {
+    return { name: "", company: "" };
+  }
+
+  const words = exhibitorLine.split(/\s+/).filter(Boolean);
+  const exhibitorIndex = words.findIndex((token) => /exhibi\w*/i.test(token));
+  if (exhibitorIndex < 0 || exhibitorIndex >= words.length - 1) {
+    return { name: "", company: "" };
+  }
+
+  const tail = words.slice(exhibitorIndex + 1);
+  if (tail.length < 3) {
+    return { name: "", company: "" };
+  }
+
+  const companySuffixIndex = tail.findIndex((token) =>
+    /^(inc\.?|llc|ltd\.?|corp\.?|co\.?|limited)$/i.test(token)
+  );
+
+  if (companySuffixIndex >= 1) {
+    const company = normalizeOcrLine(tail.slice(companySuffixIndex - 1, companySuffixIndex + 1).join(" "));
+    const name = normalizeOcrLine(tail.slice(0, companySuffixIndex - 1).join(" "));
+    return { name, company };
+  }
+
+  return {
+    name: normalizeOcrLine(tail.slice(0, 2).join(" ")),
+    company: normalizeOcrLine(tail.slice(2).join(" ")),
+  };
+}
+
 function isLikelyTitle(line) {
   return /(manager|director|engineer|specialist|sales|marketing|owner|president|vp|executive|consultant|coordinator|assistant|account|lead|officer)/i.test(
     line
@@ -681,6 +714,7 @@ function parseBusinessCardText(rawText) {
   const linkedIn = findFirstMatch(text, [/(https?:\/\/www\.linkedin\.com\/[^\s]+)/i, /(linkedin\.com\/[^\s]+)/i]);
 
   const nonDetailLines = lines.filter((line) => !isContactDetailLine(line));
+  const exhibitorExtract = extractFromExhibitorLine(nonDetailLines);
   const labeledName = findLabeledField(nonDetailLines, [
     /^(?:name|contact|attn|attention|representative|rep)\s*[:\-]\s*/i,
   ]);
@@ -698,7 +732,7 @@ function parseBusinessCardText(rawText) {
     return looksLikeWords && validWordCount && !isLikelyCompany(line) && !isLikelyTitle(line);
   });
 
-  let name = labeledName || nameCandidates[0] || "";
+  let name = exhibitorExtract.name || labeledName || nameCandidates[0] || "";
   if (!name && email) {
     const localPart = email.split("@")[0] || "";
     const inferred = localPart
@@ -712,7 +746,7 @@ function parseBusinessCardText(rawText) {
   }
 
   const companyCandidates = nonDetailLines.filter((line) => isLikelyCompany(line));
-  let company = labeledCompany || companyCandidates[0] || "";
+  let company = exhibitorExtract.company || labeledCompany || companyCandidates[0] || "";
   if (!company) {
     const upperish = nonDetailLines.find((line) => {
       const hasLetters = /[A-Za-z]/.test(line);
