@@ -1081,19 +1081,48 @@ els.ocrForm.addEventListener("submit", async (event) => {
 
   const formData = new FormData();
   formData.append("cardImage", els.cardImage.files[0]);
+  const extractBtn = els.ocrForm.querySelector('button[type="submit"]');
+  const originalLabel = extractBtn ? extractBtn.textContent : "";
 
   try {
+    if (extractBtn) {
+      extractBtn.disabled = true;
+      extractBtn.textContent = "Extracting...";
+    }
+
     const response = await fetch("/api/ocr/business-card", {
       method: "POST",
       body: formData,
     });
 
-    const data = await response.json();
+    const raw = await response.text();
+    let data = {};
+    if (raw) {
+      try {
+        data = JSON.parse(raw);
+      } catch (_error) {
+        data = {};
+      }
+    }
+
     if (!response.ok) {
-      throw new Error(data.error || "Failed to process image");
+      throw new Error(
+        data.error || raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() || "Failed to process image"
+      );
     }
 
     const fields = data.fields || {};
+
+    if (mobileMediaQuery.matches) {
+      setMobileView("details");
+    } else {
+      setContactPanelsVisible(true);
+    }
+
+    // OCR capture starts a new contact draft so existing records are not overwritten.
+    state.selectedId = null;
+    els.contactId.value = "";
+
     if (fields.name) els.name.value = fields.name;
     if (fields.company) els.company.value = fields.company;
     if (fields.title) els.title.value = fields.title;
@@ -1103,12 +1132,28 @@ els.ocrForm.addEventListener("submit", async (event) => {
     if (fields.linkedIn) els.linkedIn.value = fields.linkedIn;
 
     els.ocrRaw.textContent = data.rawText || "No text found";
-    showToast("Business card extracted", "success");
-    if (mobileMediaQuery.matches) {
-      setMobileView("details");
+
+    if (!els.name.value.trim()) {
+      showToast("No contact name detected. Review details, add name, then tap Save Contact.", "error");
+      return;
     }
+
+    const payload = contactToPayload();
+    const saved = await api("/api/contacts", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+    state.selectedId = saved.contact.id;
+    await loadContacts();
+    await selectContact(state.selectedId);
+    showToast("Business card extracted and contact saved", "success");
   } catch (error) {
     showToast(error.message, "error");
+  } finally {
+    if (extractBtn) {
+      extractBtn.disabled = false;
+      extractBtn.textContent = originalLabel || "Extract Details";
+    }
   }
 });
 
