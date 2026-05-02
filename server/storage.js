@@ -1,8 +1,10 @@
 const fs = require("fs/promises");
 const path = require("path");
 const crypto = require("crypto");
+const { get, put } = require("@vercel/blob");
 
 const DB_PATH = path.join(__dirname, "..", "data", "db.json");
+const BLOB_DB_PATH = process.env.BLOB_DB_PATH || "plm-cms/db.json";
 const DEFAULT_USERS = [
   {
     id: "jeffrey-pigeon",
@@ -137,16 +139,62 @@ function getActor(db, actorId) {
   return actor;
 }
 
-async function readDb() {
+function shouldUseBlobStorage() {
+  return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+}
+
+async function readSeedDb() {
   try {
     const raw = await fs.readFile(DB_PATH, "utf-8");
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed.contacts)) {
-      parsed.contacts = [];
+    return JSON.parse(raw);
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      return { users: ensureUsers([]), contacts: [] };
     }
-    parsed.users = ensureUsers(Array.isArray(parsed.users) ? parsed.users : []);
-    parsed.contacts = parsed.contacts.map(ensureContactShape);
-    return parsed;
+    throw error;
+  }
+}
+
+async function readDbFromBlob() {
+  const blob = await get(BLOB_DB_PATH, {
+    access: "private",
+    token: process.env.BLOB_READ_WRITE_TOKEN,
+    useCache: false,
+  });
+
+  if (!blob) {
+    return readSeedDb();
+  }
+
+  const raw = await new Response(blob.stream).text();
+  return JSON.parse(raw);
+}
+
+async function writeDbToBlob(db) {
+  await put(BLOB_DB_PATH, JSON.stringify(db, null, 2), {
+    access: "private",
+    token: process.env.BLOB_READ_WRITE_TOKEN,
+    allowOverwrite: true,
+    addRandomSuffix: false,
+    contentType: "application/json",
+  });
+}
+
+function normalizeDb(parsed) {
+  if (!Array.isArray(parsed.contacts)) {
+    parsed.contacts = [];
+  }
+  parsed.users = ensureUsers(Array.isArray(parsed.users) ? parsed.users : []);
+  parsed.contacts = parsed.contacts.map(ensureContactShape);
+  return parsed;
+}
+
+async function readDb() {
+  try {
+    const parsed = shouldUseBlobStorage()
+      ? await readDbFromBlob()
+      : JSON.parse(await fs.readFile(DB_PATH, "utf-8"));
+    return normalizeDb(parsed);
   } catch (error) {
     if (error.code === "ENOENT") {
       return { users: ensureUsers([]), contacts: [] };
@@ -157,6 +205,11 @@ async function readDb() {
 
 async function writeDb(db) {
   try {
+    if (shouldUseBlobStorage()) {
+      await writeDbToBlob(db);
+      return;
+    }
+
     await fs.writeFile(DB_PATH, JSON.stringify(db, null, 2), "utf-8");
   } catch (error) {
     if (
