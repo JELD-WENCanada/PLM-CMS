@@ -156,7 +156,21 @@ async function readDb() {
 }
 
 async function writeDb(db) {
-  await fs.writeFile(DB_PATH, JSON.stringify(db, null, 2), "utf-8");
+  try {
+    await fs.writeFile(DB_PATH, JSON.stringify(db, null, 2), "utf-8");
+  } catch (error) {
+    if (
+      process.env.VERCEL ||
+      error.code === "EROFS" ||
+      error.code === "EPERM" ||
+      error.code === "EACCES"
+    ) {
+      throw new Error(
+        "This Vercel deployment is read-only. First-time password setup and data changes need persistent storage instead of local JSON files."
+      );
+    }
+    throw error;
+  }
 }
 
 function normalizeContactPayload(payload) {

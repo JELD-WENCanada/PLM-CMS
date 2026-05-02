@@ -555,9 +555,32 @@ async function api(path, options = {}) {
     return null;
   }
 
-  const data = await response.json();
+  const responseText = await response.text();
+  const contentType = response.headers.get("content-type") || "";
+  let data = null;
+
+  if (responseText) {
+    if (contentType.includes("application/json")) {
+      data = JSON.parse(responseText);
+    } else {
+      try {
+        data = JSON.parse(responseText);
+      } catch (_error) {
+        data = null;
+      }
+    }
+  }
+
   if (!response.ok) {
-    throw new Error(data.error || "Request failed");
+    const fallbackMessage = responseText
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    throw new Error(data?.error || fallbackMessage || "Request failed");
+  }
+
+  if (responseText && !data) {
+    throw new Error("Server returned an unexpected response");
   }
 
   return data;
