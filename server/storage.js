@@ -1,10 +1,12 @@
 const fs = require("fs/promises");
 const path = require("path");
 const crypto = require("crypto");
+const { Pool } = require("pg");
 const { get, put } = require("@vercel/blob");
 
 const DB_PATH = path.join(__dirname, "..", "data", "db.json");
 const BLOB_DB_PATH = process.env.BLOB_DB_PATH || "plm-cms/db.json";
+const STATE_KEY = "main";
 const DEFAULT_USERS = [
   {
     id: "jeffrey-pigeon",
@@ -143,6 +145,39 @@ function shouldUseBlobStorage() {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 
+function shouldUsePostgresStorage() {
+  return Boolean(process.env.DATABASE_URL);
+}
+
+let pgPool = null;
+let pgReady = false;
+
+function getPgPool() {
+  if (!pgPool) {
+    pgPool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : undefined,
+    });
+  }
+  return pgPool;
+}
+
+async function ensurePgReady() {
+  if (pgReady) {
+    return;
+  }
+
+  const pool = getPgPool();
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS app_state (
+      state_key TEXT PRIMARY KEY,
+      payload JSONB NOT NULL,
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    )
+  `);
+  pgReady = true;
+}
+
 function isReadOnlyFsError(error) {
   return error && ["EROFS", "EPERM", "EACCES"].includes(error.code);
 }
@@ -184,6 +219,37 @@ async function writeDbToBlob(db) {
   });
 }
 
+async function readDbFromPostgres() {
+  await ensurePgReady();
+  const pool = getPgPool();
+  const result = await pool.query(
+    "SELECT payload FROM app_state WHERE state_key = $1 LIMIT 1",
+    [STATE_KEY]
+  );
+
+  if (!result.rows.length) {
+    const seed = normalizeDb(await readSeedDb());
+    await writeDbToPostgres(seed);
+    return seed;
+  }
+
+  return result.rows[0].payload;
+}
+
+async function writeDbToPostgres(db) {
+  await ensurePgReady();
+  const pool = getPgPool();
+  await pool.query(
+    `
+      INSERT INTO app_state (state_key, payload, updated_at)
+      VALUES ($1, $2::jsonb, NOW())
+      ON CONFLICT (state_key)
+      DO UPDATE SET payload = EXCLUDED.payload, updated_at = NOW()
+    `,
+    [STATE_KEY, JSON.stringify(db)]
+  );
+}
+
 function normalizeDb(parsed) {
   if (!Array.isArray(parsed.contacts)) {
     parsed.contacts = [];
@@ -195,9 +261,14 @@ function normalizeDb(parsed) {
 
 async function readDb() {
   try {
-    const parsed = shouldUseBlobStorage()
-      ? await readDbFromBlob()
-      : JSON.parse(await fs.readFile(DB_PATH, "utf-8"));
+    let parsed;
+    if (shouldUsePostgresStorage()) {
+      parsed = await readDbFromPostgres();
+    } else if (shouldUseBlobStorage()) {
+      parsed = await readDbFromBlob();
+    } else {
+      parsed = JSON.parse(await fs.readFile(DB_PATH, "utf-8"));
+    }
     return normalizeDb(parsed);
   } catch (error) {
     if (error.code === "ENOENT") {
@@ -209,6 +280,17 @@ async function readDb() {
 
 async function writeDb(db) {
   const payload = JSON.stringify(db, null, 2);
+
+  if (shouldUsePostgresStorage()) {
+    try {
+      await writeDbToPostgres(db);
+      return;
+    } catch (error) {
+      throw new Error(
+        `Postgres storage write failed. Check DATABASE_URL and database access. ${error.message || ""}`.trim()
+      );
+    }
+  }
 
   if (shouldUseBlobStorage()) {
     try {
@@ -223,7 +305,7 @@ async function writeDb(db) {
 
   if (process.env.VERCEL) {
     throw new Error(
-      "BLOB_READ_WRITE_TOKEN is missing in Vercel. Connect a Blob store to this project and redeploy."
+      "No writable production storage configured. Set DATABASE_URL (recommended) or BLOB_READ_WRITE_TOKEN and redeploy."
     );
   }
 
