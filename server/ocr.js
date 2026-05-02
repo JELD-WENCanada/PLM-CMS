@@ -82,8 +82,8 @@ function parseBusinessCardText(rawText) {
   };
 }
 
-async function extractBusinessCardDetails(imagePath) {
-  const result = await Tesseract.recognize(imagePath, "eng", {
+async function extractBusinessCardDetails(imageInput) {
+  const result = await Tesseract.recognize(imageInput, "eng", {
     logger: () => {},
   });
 
