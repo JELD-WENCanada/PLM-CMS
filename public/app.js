@@ -499,6 +499,22 @@ function openSplash(force = false) {
   els.userSplash.classList.remove("hidden");
 }
 
+function showUserLoadFailure(message) {
+  openSplash(false);
+  els.userPicker.innerHTML = "";
+
+  const empty = document.createElement("p");
+  empty.className = "panel-intro";
+  empty.textContent = message;
+  els.userPicker.appendChild(empty);
+
+  els.passwordHelpText.textContent = message;
+  els.userPassword.disabled = true;
+  els.confirmUserPassword.disabled = true;
+  els.showResetPasswordBtn.classList.add("hidden");
+  els.continueBtn.disabled = true;
+}
+
 function closeSplash() {
   els.userSplash.classList.add("hidden");
 }
@@ -1080,11 +1096,19 @@ els.ocrForm.addEventListener("submit", async (event) => {
   els.searchInput.value = "";
   els.searchInput.readOnly = true;
   state.sortOrder = els.sortOrder.value === "desc" ? "desc" : "asc";
-  await loadUsers();
-  if (state.activeUserId) {
-    closeSplash();
-  } else {
-    openSplash(true);
+  try {
+    await loadUsers();
+    if (state.activeUserId) {
+      closeSplash();
+    } else {
+      openSplash(true);
+    }
+    els.userPassword.disabled = false;
+    els.confirmUserPassword.disabled = false;
+    els.continueBtn.disabled = false;
+  } catch (_error) {
+    showUserLoadFailure("Could not load team members. Start the app server and refresh.");
+    return;
   }
   if (mobileMediaQuery.matches) {
     setMobileView("home");
