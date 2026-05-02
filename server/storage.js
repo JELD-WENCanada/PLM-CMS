@@ -1,8 +1,10 @@
 const fs = require("fs/promises");
 const path = require("path");
 const crypto = require("crypto");
+const { kv } = require("@vercel/kv");
 
 const DB_PATH = process.env.DB_PATH || path.join(__dirname, "..", "data", "db.json");
+const KV_STATE_KEY = process.env.KV_STATE_KEY || "plm-cms:state";
 const DEFAULT_USERS = [
   {
     id: "jeffrey-pigeon",
@@ -141,6 +143,10 @@ function isReadOnlyFsError(error) {
   return error && ["EROFS", "EPERM", "EACCES"].includes(error.code);
 }
 
+function shouldUseKvStorage() {
+  return Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+}
+
 async function readSeedDb() {
   try {
     const raw = await fs.readFile(DB_PATH, "utf-8");
@@ -164,6 +170,16 @@ function normalizeDb(parsed) {
 
 async function readDb() {
   try {
+    if (shouldUseKvStorage()) {
+      const stored = await kv.get(KV_STATE_KEY);
+      if (!stored) {
+        const seed = normalizeDb(await readSeedDb());
+        await kv.set(KV_STATE_KEY, seed);
+        return seed;
+      }
+      return normalizeDb(stored);
+    }
+
     const parsed = JSON.parse(await fs.readFile(DB_PATH, "utf-8"));
     return normalizeDb(parsed);
   } catch (error) {
@@ -175,12 +191,23 @@ async function readDb() {
 }
 
 async function writeDb(db) {
+  if (shouldUseKvStorage()) {
+    try {
+      await kv.set(KV_STATE_KEY, db);
+      return;
+    } catch (error) {
+      throw new Error(`KV write failed. ${error.message || "Check KV integration."}`);
+    }
+  }
+
   try {
     await fs.writeFile(DB_PATH, JSON.stringify(db, null, 2), "utf-8");
   } catch (error) {
     if (isReadOnlyFsError(error)) {
       throw new Error(
-        "Storage path is read-only. Set DB_PATH to a writable location (for example a Railway volume mount)."
+        process.env.VERCEL
+          ? "Storage is read-only. Connect Vercel KV to this project and redeploy."
+          : "Storage path is read-only. Set DB_PATH to a writable location (for example a Railway volume mount)."
       );
     }
     throw error;

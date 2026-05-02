@@ -46,6 +46,16 @@ This app can run with plain JSON storage on Railway when you mount a persistent 
 
 If `DB_PATH` is not set, the app defaults to `data/db.json` in the project folder.
 
+## Deploy On Vercel (KV Storage)
+
+Use this path if you want to stay on Vercel and avoid database/certificate setup.
+
+1. Import/deploy this repository in Vercel.
+2. In your Vercel project, open `Storage` and add/connect `KV` (Upstash Redis).
+3. Redeploy the project.
+
+When KV env vars are present, the app uses KV automatically for persistent storage.
+
 ## API Overview
 
 - `GET /api/users`: List team users
