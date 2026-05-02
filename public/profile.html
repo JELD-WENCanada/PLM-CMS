@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PLM CMS - Profile</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg-ornament bg-ornament-a"></div>
+    <div class="bg-ornament bg-ornament-b"></div>
+
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="eyebrow">JELD-WEN Canada | PLM Team</p>
+        <h1>Team Profile Settings</h1>
+        <p class="subtitle">Manage role and contact details for PLM team members.</p>
+      </div>
+      <div class="active-user-shell">
+        <p class="active-user-label">Active User</p>
+        <strong id="activeUserName">Not selected</strong>
+        <div class="topbar-actions">
+          <button id="themeToggleBtn" class="btn ghost" type="button">Dark Mode</button>
+          <button id="backBtn" class="btn ghost" type="button">Back to Contacts</button>
+          <button id="logoutBtn" class="btn ghost" type="button">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout profile-layout">
+      <section class="card panel-profile">
+        <div class="panel-header">
+          <h2>Team Profiles</h2>
+        </div>
+        <p class="panel-intro">Select a team member and save updates.</p>
+
+        <form id="teamProfileForm" class="form-grid">
+          <label>
+            Team Member
+            <select id="teamProfileUser" required></select>
+          </label>
+          <label>
+            Role
+            <input id="teamRole" placeholder="Job title" />
+          </label>
+          <label>
+            Email
+            <input id="teamEmail" type="email" placeholder="name@jeldwen.com" />
+          </label>
+          <label>
+            Phone
+            <input id="teamPhone" placeholder="Contact number" />
+          </label>
+          <label class="full-width">
+            Notes
+            <textarea id="teamNotes" rows="3" placeholder="Internal profile notes"></textarea>
+          </label>
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Save Team Profile</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="/profile.js"></script>
+  </body>
+</html>

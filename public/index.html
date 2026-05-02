@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PLM CMS - Contact Manager</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="userSplash" class="splash-overlay" aria-modal="true" role="dialog">
+      <section class="splash-card">
+        <div class="splash-header">
+          <p class="eyebrow splash-eyebrow">JELD-WEN Canada | PLM Team</p>
+          <h2>PLM Workspace Login</h2>
+          <p class="panel-intro">Choose your user card and sign in to continue.</p>
+        </div>
+
+        <div id="userPicker" class="user-picker"></div>
+
+        <section class="password-panel">
+          <div class="hidden-username-trap" aria-hidden="true">
+            <input type="text" autocomplete="username" tabindex="-1" />
+          </div>
+          <p id="passwordHelpText" class="panel-intro">Select a user to continue.</p>
+          <label>
+            Password
+            <input id="userPassword" type="password" autocomplete="current-password" placeholder="Enter password" />
+          </label>
+          <label id="confirmPasswordWrap" class="hidden">
+            Confirm Password
+            <input id="confirmUserPassword" type="password" autocomplete="new-password" placeholder="Confirm password" />
+          </label>
+          <button id="showResetPasswordBtn" class="btn ghost reset-pass-trigger" type="button">Reset Password</button>
+          <div id="resetPasswordPanel" class="hidden reset-password-panel">
+            <label>
+              Current Password
+              <input id="resetCurrentPassword" type="password" autocomplete="current-password" placeholder="Current password" />
+            </label>
+            <label>
+              New Password
+              <input id="resetNewPassword" type="password" autocomplete="new-password" placeholder="New password" />
+            </label>
+            <label>
+              Confirm New Password
+              <input id="resetConfirmPassword" type="password" autocomplete="new-password" placeholder="Confirm new password" />
+            </label>
+            <div class="reset-password-actions">
+              <button id="applyResetPasswordBtn" class="btn primary" type="button">Apply Reset</button>
+              <button id="cancelResetPasswordBtn" class="btn ghost" type="button">Cancel</button>
+            </div>
+          </div>
+        </section>
+
+        <div class="splash-actions">
+          <button id="continueBtn" class="btn primary" type="button">Sign In</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="bg-ornament bg-ornament-a"></div>
+    <div class="bg-ornament bg-ornament-b"></div>
+
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="eyebrow">JELD-WEN Canada | PLM Team</p>
+        <h1>PLM Contact Manager</h1>
+        <p class="subtitle">Capture contacts, scan business cards, and review meeting history before every follow-up.</p>
+      </div>
+      <div class="search-shell">
+        <input
+          id="searchInput"
+          type="text"
+          name="q_plm_filter"
+          placeholder="Type to search name, company, email..."
+          readonly
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          aria-autocomplete="none"
+          data-lpignore="true"
+          spellcheck="false"
+        />
+      </div>
+      <div class="active-user-shell">
+        <p class="active-user-label">Active User</p>
+        <div id="userMenuWrap" class="user-menu-wrap">
+          <button
+            id="userMenuBtn"
+            class="user-menu-btn"
+            type="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            title="Open active user menu"
+          >
+            <span id="activeUserInitials">--</span>
+          </button>
+          <div id="userMenuPanel" class="user-menu-panel hidden" role="menu">
+            <p id="activeUserName" class="menu-user-name">Not selected</p>
+            <button id="openProfilePaneBtn" class="btn ghost menu-btn" type="button">Profile</button>
+            <button id="themeToggleBtn" class="btn ghost menu-btn" type="button">Dark Mode</button>
+            <button id="logoutBtn" class="btn ghost menu-btn" type="button">Logout</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section id="mobileHomePanel" class="card mobile-only mobile-home-panel">
+        <p class="eyebrow mobile-eyebrow">Mobile Workspace</p>
+        <h2>Capture First</h2>
+        <p class="panel-intro">Snap business cards in the field, then fill details and notes in seconds.</p>
+        <div class="mobile-home-actions">
+          <button id="mobileScanCardBtn" class="btn primary mobile-capture-btn" type="button">Scan Business Card</button>
+          <button id="mobileQuickNewBtn" class="btn secondary" type="button">New Contact</button>
+        </div>
+      </section>
+
+      <section id="directoryPanel" class="card panel-list">
+        <div class="panel-header">
+          <h2>People Directory</h2>
+          <div class="panel-header-actions">
+            <label class="sort-control" for="sortOrder">
+              Sort
+              <select id="sortOrder" aria-label="Sort contacts">
+                <option value="asc">A to Z</option>
+                <option value="desc">Z to A</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <p class="panel-intro">Select a person to review latest details and notes.</p>
+        <div id="contactsList" class="contact-list"></div>
+      </section>
+
+      <section id="contactStartHint" class="card panel-start-hint">
+        <h2>Start Contact Work</h2>
+        <p class="panel-intro">Click New Contact or select a contact from the left list to reveal contact details and timeline.</p>
+        <div class="start-hint-actions">
+          <button id="newContactBtn" class="btn secondary" type="button">New Contact</button>
+        </div>
+      </section>
+
+      <section id="contactDetailsPanel" class="card panel-details hidden">
+        <div class="panel-header">
+          <h2>Contact Details</h2>
+          <button id="deleteBtn" class="btn danger" disabled>Delete</button>
+        </div>
+
+        <form id="contactForm" class="form-grid">
+          <input type="hidden" id="contactId" />
+          <label>
+            Name
+            <input id="name" required />
+          </label>
+          <label>
+            Company
+            <input id="company" />
+          </label>
+          <label>
+            Title
+            <input id="title" />
+          </label>
+          <label>
+            Email
+            <input id="email" type="email" />
+          </label>
+          <label>
+            Phone
+            <input id="phone" />
+          </label>
+          <label>
+            Website
+            <input id="website" />
+          </label>
+          <label>
+            LinkedIn
+            <input id="linkedIn" />
+          </label>
+          <label>
+            Tags (comma separated)
+            <input id="tags" placeholder="prospect, vendor, client" />
+          </label>
+          <label>
+            Next Meeting Date
+            <input id="nextMeetingDate" type="date" />
+          </label>
+
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Save Contact</button>
+            <button id="resetBtn" class="btn ghost" type="button">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="ocrPanel" class="card panel-ocr hidden">
+        <h2>Business Card Capture</h2>
+        <p class="panel-intro">Upload or snap a card image to auto-fill details.</p>
+        <form id="ocrForm" class="ocr-form">
+          <input id="cardImage" type="file" accept="image/*" capture="environment" required />
+          <button class="btn primary" type="submit">Extract Details</button>
+        </form>
+        <pre id="ocrRaw" class="ocr-raw"></pre>
+      </section>
+
+      <section id="timelinePanel" class="card panel-timeline hidden">
+        <h2>Meeting Notes Timeline</h2>
+        <p class="panel-intro">Keep a running context log so every next meeting starts informed.</p>
+        <form id="noteForm" class="note-form">
+          <textarea id="noteText" rows="3" placeholder="Add latest meeting note..." required></textarea>
+          <button class="btn primary" type="submit">Add Note</button>
+        </form>
+        <div id="timeline" class="timeline"></div>
+      </section>
+    </main>
+
+    <nav id="mobileTabBar" class="mobile-only mobile-tabbar" aria-label="Mobile navigation">
+      <button id="mobileTabHome" class="mobile-tab active" type="button">
+        <span class="mobile-tab-icon" aria-hidden="true">&#8962;</span>
+        <span class="mobile-tab-label">Home</span>
+      </button>
+      <button id="mobileTabDirectory" class="mobile-tab" type="button">
+        <span class="mobile-tab-icon" aria-hidden="true">&#9776;</span>
+        <span class="mobile-tab-label">Directory</span>
+      </button>
+      <button id="mobileTabCapture" class="mobile-tab mobile-tab-emphasis" type="button">
+        <span class="mobile-tab-icon" aria-hidden="true">&#9679;</span>
+        <span class="mobile-tab-label">Scan</span>
+      </button>
+    </nav>
+
+    <div id="mobileUserMenuOverlay" class="mobile-user-menu-overlay hidden" aria-hidden="true"></div>
+    <section
+      id="mobileUserMenuSheet"
+      class="mobile-user-menu-sheet hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Active user menu"
+    >
+      <p id="mobileActiveUserName" class="menu-user-name">Not selected</p>
+      <button id="mobileOpenProfilePaneBtn" class="btn ghost menu-btn" type="button">Profile</button>
+      <button id="mobileThemeToggleBtn" class="btn ghost menu-btn" type="button">Dark Mode</button>
+      <button id="mobileLogoutBtn" class="btn ghost menu-btn" type="button">Logout</button>
+    </section>
+
+    <div id="profilePaneOverlay" class="pane-overlay hidden"></div>
+    <aside id="profilePane" class="profile-pane hidden" aria-hidden="true">
+      <div class="profile-pane-header">
+        <h2>Team Profile Settings</h2>
+        <button id="closeProfilePaneBtn" class="btn ghost" type="button">Close</button>
+      </div>
+      <p class="panel-intro">Select a team member and save updates.</p>
+
+      <form id="teamProfileForm" class="form-grid">
+        <label>
+          Team Member
+          <select id="teamProfileUser" required></select>
+        </label>
+        <label>
+          Role
+          <input id="teamRole" placeholder="Job title" />
+        </label>
+        <label>
+          Email
+          <input id="teamEmail" type="email" placeholder="name@jeldwen.com" />
+        </label>
+        <label>
+          Phone
+          <input id="teamPhone" placeholder="Contact number" />
+        </label>
+        <label class="full-width">
+          Notes
+          <textarea id="teamNotes" rows="3" placeholder="Internal profile notes"></textarea>
+        </label>
+        <div class="form-actions">
+          <button class="btn primary" type="submit">Save Team Profile</button>
+        </div>
+      </form>
+    </aside>
+
+    <template id="contactItemTemplate">
+      <button class="contact-item" type="button">
+        <strong class="contact-name"></strong>
+        <span class="contact-company"></span>
+        <small class="contact-meta"></small>
+      </button>
+    </template>
+
+    <template id="timelineItemTemplate">
+      <article class="timeline-item">
+        <p class="timeline-text"></p>
+        <small class="timeline-date"></small>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

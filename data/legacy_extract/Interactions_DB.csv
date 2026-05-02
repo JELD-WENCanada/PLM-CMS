@@ -1,0 +1,95 @@
+INTERACTIONS,,,,,,,,,,,,CRITERIA,,,,RESULTS,,,,,,
+,,,,,,,,,,,,Cont. ID,,,,Name,Type,Date,Time,Duration,Notes,Row
+Int. ID,Cont. ID,Name,Type,Date,Time,Duration,Notes,Row,,,,42,,,,Mark's role &cell,Letter,46027,0.6875,1.0416666666666666E-2,Acting CEO; 705-716-4707,89
+1,1,Testing form,Letter,45987,0.67708333333333337,2.0833333333333332E-2,testing the form to see how it works,23,,,,,,,,Product,Letter,46027,0.6875,1.0416666666666666E-2,Fiberglass slabs,90
+2,,,,,,,,,,,,,,,,,,,,,,
+3,,,,,,,,,,,,,,,,,,,,,,
+4,,,,,,,,,,,,,,,,,,,,,,
+5,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,
+7,,,,,,,,,,,,,,,,,,,,,,
+8,,,,,,,,,,,,,,,,,,,,,,
+9,,,,,,,,,,,,,,,,,,,,,,
+10,,,,,,,,,,,,,,,,,,,,,,
+11,,,,,,,,,,,,,,,,,,,,,,
+12,,,,,,,,,,,,,,,,,,,,,,
+13,,,,,,,,,,,,,,,,,,,,,,
+14,,,,,,,,,,,,,,,,,,,,,,
+16,,,,,,,,,,,,,,,,,,,,,,
+17,,,,,,,,,,,,,,,,,,,,,,
+18,,,,,,,,,,,,,,,,,,,,,,
+19,,,,,,,,,,,,,,,,,,,,,,
+20
+21,,,,,,,
+22,1,Test 2,In-person Meeting,45993,0.60416666666666663,2.0833333333333332E-2,Meeting with self,24
+23,4,Marco's role,Letter,45993,0.63541666666666663,1.0416666666666666E-2,Cell 418-226-9220; VP Sales & Marketing,25
+24,3,Alireza's role,Letter,45993,0.64583333333333337,1.0416666666666666E-2,Cheif Executive Officer,26
+25,5,Daniel's role,Letter,45993,0.64583333333333337,1.0416666666666666E-2,VP Sales Canada,27
+26,6,Joe's role,Letter,45993,0.64583333333333337,1.0416666666666666E-2,NAM & Commercial Account Specialist,28
+27,7,Exporter,Letter,45993,0.64583333333333337,1.0416666666666666E-2,Chinese exporter of windows,29
+28,8,John's role,Letter,45993,0.64583333333333337,1.0416666666666666E-2,VP Inside Sales (office phone 905-265-9970),30
+29,9,Mark's role,Letter,45993,0.66666666666666663,1.0416666666666666E-2,Exec VP of West Four,31
+30,10,Robert's role,Letter,45993,0.66666666666666663,1.0416666666666666E-2,Sales,32
+31,11,Robert's role,Letter,45993,0.66666666666666663,1.0416666666666666E-2,VP Sales,33
+32,12,John's Role,Letter,45993,0.67708333333333337,1.0416666666666666E-2,Director of Commercial development,34
+33,13,Danny's role,Letter,45993,0.67708333333333337,1.0416666666666666E-2,Sales & Ops Mgr (office tel 905-731-5627),35
+34,14,Alizer's role,Letter,45993,0.67708333333333337,1.0416666666666666E-2,CEO (office number 416-635-1714),36
+35,15,Andrew's role,Letter,45993,0.6875,1.0416666666666666E-2,VP of Sales,37
+36,16,Sanford's role,Letter,45996,0.35416666666666669,1.0416666666666666E-2,Sales Manager,38
+37,18,Sumeet's role,Letter,45996,0.36458333333333331,1.0416666666666666E-2,Director of Business Development,39
+38,19,Ron's role,Letter,45996,0.36458333333333331,1.0416666666666666E-2,VP & GM 905-335-1559 x225,40
+39,10,Product,Letter,45996,0.38541666666666669,1.0416666666666666E-2,door components,41
+40,2,Product,Letter,45996,0.38541666666666669,1.0416666666666666E-2,Aluminum clad wood windows and doors,42
+41,17,Product,Letter,45996,0.38541666666666669,1.0416666666666666E-2,Display fixtures,43
+42,20,Product,Letter,45996,0.38541666666666669,1.0416666666666666E-2,FiniShield laminate,44
+43,12,Product,Letter,45996,0.38541666666666669,1.0416666666666666E-2,Door lite kits,45
+44,15,Product,Letter,45996,0.38541666666666669,1.0416666666666666E-2,Door lite kits,46
+45,4,Product,Letter,45996,0.38541666666666669,1.0416666666666666E-2,Stained finish on FG slabs for DF,47
+46,11,Product,Letter,45996,0.38541666666666669,1.0416666666666666E-2,"Door glass, patio doors, steel slabs",48
+47,5,Product,Letter,45996,0.39583333333333331,1.0416666666666666E-2,"Dorr lites, steel slabs, FG slabs",49
+48,6,Product,Letter,45996,0.39583333333333331,1.0416666666666666E-2,Window hardware,50
+49,13,Product,Letter,45996,0.39583333333333331,1.0416666666666666E-2,FG slabs,51
+50,19,Product,Letter,45996,0.39583333333333331,1.0416666666666666E-2,"Door lites, shaker slabs",52
+51,18,Product,Letter,45996,0.39583333333333331,1.0416666666666666E-2,Vent kits for interior doors,53
+52,8,Product,Letter,45996,0.39583333333333331,1.0416666666666666E-2,"Vinyl extrusions, finishes and coatings",54
+53,7,Product,Letter,45996,0.39583333333333331,1.0416666666666666E-2,Vinyl windows from China,55
+54,21,Joseph's role,Letter,46000,0.35416666666666669,1.0416666666666666E-2,Sales rep,56
+55,21,Product,Letter,46000,0.33333333333333331,1.0416666666666666E-2,"Hardware, hinges",57
+56,22,Bill's role,Letter,46000,0.36458333333333331,1.0416666666666666E-2,Global sales,58
+57,23,Danny's role,Letter,46000,0.48958333333333331,1.0416666666666666E-2,Sales manager,59
+58,23,Product,Letter,46000,0.48958333333333331,1.0416666666666666E-2,"Vented doors, int drs, ext doors, sells to THD USA",60
+59,24,Paul role,Letter,46000,0.48958333333333331,1.0416666666666666E-2,Sales manager,61
+60,24,Product,Letter,46000,0.48958333333333331,1.0416666666666666E-2,"Bird glass film, 3M coatings",62
+61,25,Matthew's role,Letter,46000,0.48958333333333331,1.0416666666666666E-2,Business Develoment Manager,63
+62,25,Product,Letter,46000,0.48958333333333331,1.0416666666666666E-2,"Bird glass film, 3M coatings",64
+63,26,Product,Letter,46000,0.61458333333333337,1.0416666666666666E-2,Aluminum windows and doors,65
+64,27,Alex's role,Letter,46000,0.61458333333333337,1.0416666666666666E-2,Product manager,66
+65,28,Raisa's role,Letter,46000,0.65625,1.0416666666666666E-2,Managing director Marking & Operatons,67
+66,28,Product,Letter,45996,0.65625,1.0416666666666666E-2,Aluminum clad wood windows,68
+67,29,Haya's role,Letter,45996,0.65625,1.0416666666666666E-2,"Business Mgr, building envelope",69
+68,30,Le's role,Letter,46000,0.65625,1.0416666666666666E-2,Sales Manager,70
+69,31,Jackie's role,Letter,46000,0.65625,1.0416666666666666E-2,Customer success specialists,71
+70,32,Frederic's role,Letter,46000,0.66666666666666663,1.0416666666666666E-2,Technical representative,72
+71,32,Product,Letter,46000,0.66666666666666663,1.0416666666666666E-2,Door MP locks hardware and handles,73
+72,33,Jeff's role,Letter,46000,0.66666666666666663,1.0416666666666666E-2,Sales representative,74
+73,33,Product,Letter,46000,0.66666666666666663,1.0416666666666666E-2,Industrial wood/paint coatings,75
+74,34,Matt's role,Letter,46000,0.66666666666666663,1.0416666666666666E-2,Engineering Manager,76
+75,35,Monty's role,Letter,46027,0.48958333333333331,1.0416666666666666E-2,President & CEO,77
+76,27,Products,Letter,46143,0.60416666666666663,1.0416666666666666E-2,Window installation components,78
+77,36,Jacque's role,Letter,46027,0.60416666666666663,1.0416666666666666E-2,Sales manager,79
+78,36,Products,Letter,46027,0.60416666666666663,1.0416666666666666E-2,Window hardware,80
+79,37,Justin's role,Letter,46027,0.60416666666666663,1.0416666666666666E-2,manufaturer representative,81
+80,37,Products,Letter,46027,0.60416666666666663,1.0416666666666666E-2,Window tapes and flashings,82
+81,38,Skip's role,Letter,46027,0.60416666666666663,1.0416666666666666E-2,Directore of Business Development,83
+82,38,Skip's cell,Letter,46027,0.60416666666666663,1.0416666666666666E-2,416-908-6415,84
+83,39,Jayme's role,Letter,46027,0.60416666666666663,1.0416666666666666E-2,Canadian sales manager,85
+84,39,Jayme's cell,Letter,46027,0.60416666666666663,1.0416666666666666E-2,416-953-5448,86
+85,40,Mick's cell number,Letter,46027,0.61458333333333337,1.0416666666666666E-2,204-981-9999,87
+86,41,RSVP Products,Letter,46027,0.61458333333333337,1.0416666666666666E-2,"Commercial glass, adhesives and glazings",88
+87,42,Mark's role &cell,Letter,46027,0.6875,1.0416666666666666E-2,Acting CEO; 705-716-4707,89
+88,42,Product,Letter,46027,0.6875,1.0416666666666666E-2,Fiberglass slabs,90
+89,43,Marks role & cell,Letter,46027,0.6875,1.0416666666666666E-2,Operating partner 416-708-9288,91
+90,44,Eddie's role & cell,Letter,46027,0.6875,1.0416666666666666E-2,Director of Business Development 403-835-6928,92
+91,44,Product,Letter,46027,0.69791666666666663,1.0416666666666666E-2,"Decorative door lites, shaker style slabs",93
+92,45,Robert's role,Letter,46027,0.69791666666666663,1.0416666666666666E-2,Regional Account Manager,94
+93,45,Product,Letter,46027,0.69791666666666663,1.0416666666666666E-2,Patio doors and patio door components,95

@@ -1,0 +1,48 @@
+CONTACTS,,,,,,,,,,,,,,CONTACT LIST CRITERIA,,,,,CONTACT LIST RESULTS,,
+,,,,,,,,,,,,,,Active,Business Name,,,,Business Name,Name,Row
+Cont. ID,Business Name,Name,Phone,Email,Address,City,Prov.,Postal Code,Active,Picture Path,Row,,,<>,**,,,,Aribell,Robert Pollak,13
+1,JELD-WEN,Russ Miller,226-919-8759,rumiller@jeldwen.com,"5750 Explorer Drive, Unit 402",Mississauga,ON,L4W 5K9,1,C:\Users\RussellM\OneDrive - JELDWEN Inc\Desktop\PLM\Supplier CRM\Pictures\Russ Business Card W x200 P.jpg,4,,,,,,,,Assa Abloy,Joseph Slonimsky,24
+2,Attraverso,Eugene Bezsosiednii,647-202-7372,e.bezsosiednii,"6141 Atlantic Drive, Unit 1-2",Mississauga,ON,L5T 1L9,1,C:\Users\RussellM\OneDrive - JELDWEN Inc\Desktop\PLM\Supplier CRM\Pictures\Attraverso Eugene.jpg,5,,,,,,,,Attraverso,Eugene Bezsosiednii,5
+3,Casa Loma Group Inc,Alireza Narenjkar,949-346-7275,info@casalomadoors.com,,,,,0,,6,,,,,,,,Attraverso,Raisa Temnova,31
+4,Giltek,Marco Trudel,418-774-3671,marco.trudel@giltek.ca,3703 Route Kennedy,Notre-Dames-Des-Pins,QC,G0M 1K0,1,,7,,,,,,,,Casa Loma Group Inc,Alireza Narenjkar,6
+5,ODL,Daniel Custodio,226-387-4394,daniel.custodio@odl.com,20 Vaughan Valley Blvd,Vaughan,ON,L4H 0B1,1,,8,,,,,,,,Concord Woodworking,Elio Rotondi,20
+6,Quanex NA Fenestration,Joe Erb,740-439-6412,joe.erb@quanex.com,"388 S Main St, Suite 700",Akron,OH,44311,1,,9,,,,,,,,Continental,Marco Patermann,23
+7,Weika Windows,Jack Yao,,weika@weika.co,,,,,1,,10,,,,,,,,Convenience Group,Paul Alarie,27
+8,Vision Extrusions Group,John Todd,647-338-7396,jtodd@vexgroup.com,201 Zenway Blvd,Woodbridge,ON,L4H 3H9,1,,11,,,,,,,,Convenience Group,Matthew Denley,28
+9,Madero,Mark Fafard,306-220-8686,,327 Wheeler Place,Sakatoon,SK,S7P 0A4,0,,12,,,,,,,,Craft Door,Alireza Narenjkar,17
+10,Aribell,Robert Pollak,905-669-5001,robert@aribell.ca,380 Four Valley Drive,Concord,ON,L4K 5Z1,1,,13,,,,,,,,Elton Manufacturing,John Wolak,15
+11,Novatech,Robert Latour,514-895-6932,robert.latour@groupenovatech.com,"160, rue Murano",Sainte-Julie,QC,J3E 0C6,1,,14,,,,,,,,Elton Manufacturing,Andrew Beavan,18
+12,Elton Manufacturing,John Wolak,647-355-2150,jwolak@eltonmanufacturing.com,1265 Aerowood Dr,Mississauga,ON,L4W 1B9,1,,15,,,,,,,,Fancy Doors & Mouldings,Monty Grewal,38
+13,Richersons Ent Ltd,Danny Lin,416-451-1745,d.lin@richersons.com,"54 West Beaver Creek Rd, Unit 100",Richmond Hill,ON,L4B 1G5,1,,16,,,,,,,,Fentro,Alex Nickel,30
+14,Craft Door,Alireza Narenjkar,416-919-1714,alireza@craftdoor.com,"77 Courtland Ave, Unit 4",Concord,ON,L4K 3S9,0,,17,,,,,,,,Ferco,Frederic Belisle,35
+15,Elton Manufacturing,Andrew Beavan,905-302-6960,andrew@eltonmanufacturing.com,1265 Aerowood Dr,Mississauga,ON,L4W 1B9,1,,18,,,,,,,,FlexScreen,Mark Straub,46
+16,Nan Ya Plastics Corporation,Sanford,,sanford.tsai@gmail.com,,"Taipei, Taiwan",,,0,,19,,,,,,,,Giltek,Marco Trudel,7
+17,Concord Woodworking,Elio Rotondi,905-669-3980,office@concordwoodworking.com,100 Spinnaker Way,Concord,ON,L4K 2P6,0,,20,,,,,,,,JELD-WEN,Russ Miller,4
+18,VanAir,Sumeet Goswami,"604-757-1374, Ext 15",sumeet@vanairdesign.com,2-7315 Meadow Ave,Burnaby,BC,V5J 4Z2,0,,21,,,,,,,,Madero,Mark Fafard,12
+19,Trimlite Mfg Inc.,Ron VandenBrink,905-464-5261,ronv@trimlite.com,4385 Mainway,Burlington,ON,L7L 7P2,1,,22,,,,,,,,Mennie,Mark Williams,45
+20,Continental,Marco Patermann,540-550-4596,marco.patermann@marcorp.global,,Lima,OH,45805,1,,23,,,,,,,,Nan Ya Plastics Corporation,Sanford,19
+21,Assa Abloy,Joseph Slonimsky,647-395-3871,josheph.slonimsky@assaabloydss.com,160 Four Valley Drive,Vaughan,ON,L4K 4T9,1,,24,,,,,,,,NF Windows & Doors,Norman Chen,29
+22,North Tech,Bill Liu,604-248-8285,dept06@northtechwindowscn.com,1151 Georgia St,Vancouver,BC,V6E 0B3,0,,25,,,,,,,,Ningbo Youyou International Co,Jacque,39
+23,Qingdao,Dany Ding,,danny@qingdafortune.com,,,,,0,,26,,,,,,,,North Tech,Bill Liu,25
+24,Convenience Group,Paul Alarie,647-466-9996,palarie@conveniencegroup.com,10 Butterick Road,Toronto,ON,M8W 3Z8,0,,27,,,,,,,,Novatech,Robert Latour,14
+25,Convenience Group,Matthew Denley,647-237-2537,mdenley@conveniencegroup.com,10 Butterick Road,Tornto,ON,M8W 3Z8,0,,28,,,,,,,,ODL,Daniel Custodio,8
+26,NF Windows & Doors,Norman Chen,,norman0602@aluwf.com,,,,,0,,29,,,,,,,,Omni Glass,Matt de Witt,37
+27,Fentro,Alex Nickel,905-515-4853,alex.nickel@fentro.com,150 Grant St,Morden,MB,,0,,30,,,,,,,,Qingdao,Dany Ding,26
+28,Attraverso,Raisa Temnova,416-570-3032,r.temnova@attraverso.ca,"6141 Atlantic Drive, Unit 1-2",Mississauga,ON,L5T 1L9,1,,31,,,,,,,,Quanex NA Fenestration,Joe Erb,9
+29,UL Solutions,Haya Soghrati,647-354-1396,haya.soghrati@ul.com,7 Underwriters Rd,Toronto,ON,M1R 3A9,1,,32,,,,,,,,Richersons Ent Ltd,Danny Lin,16
+30,UL Solutions,Le Tantoulos,416-553-1884,le.tantoulos@ul.com,7 Underwriters Rd,Toronto,ON,M1R 3A9,1,,33,,,,,,,,RSVP Agency,Eric Diotte,44
+31,UL Solutions,Jackie Chiu,416-228-2524,jackie.chiu@ul.com,7 Underwriters Rd,Toronto,ON,M1R 3A9,1,,34,,,,,,,,Screenco,Jayme Tilley,42
+32,Ferco,Frederic Belisle,418-802-1056,belisle.f@ferco.ca,"2000, Berlier Street",Laval,QC,H7L 4S4,1,,35,,,,,,,,Sherwin-Williams,Jeff Meloche,36
+33,Sherwin-Williams,Jeff Meloche,226-387-3161,jeff.r.meloche@sherwin.com,130 Van Kirk Drive,Brampton,ON,L7A 1B1,1,,36,,,,,,,,Siga,Justin Hamway,40
+34,Omni Glass,Matt de Witt,204-291-8237,mdewitt@omniglass.com,300-100 Hoke Street,Winnipeg,MB,R2C 3N2,1,,37,,,,,,,,Standard Doors,Robert Beal,48
+35,Fancy Doors & Mouldings,Monty Grewal,780-452-6000,monty@fancydoors.com,4421 Roper Road NW,Edmonton,AB,T6B 3S5,0,,38,,,,,,,,Trimlite Mfg Inc,Eddie Choe,47
+36,Ningbo Youyou International Co,Jacque,,Youyou@188.com,,,,,1,,39,,,,,,,,Trimlite Mfg Inc.,Ron VandenBrink,22
+37,Siga,Justin Hamway,416-315-0696,justin.hamway@siga.swiss,,,,,1,,40,,,,,,,,Tru Tech Doors,Skip MacLean,41
+38,Tru Tech Doors,Skip MacLean,905-856-0096 ext 263,smaclean@trutechdoors.com,20 Vaughan Valley Blvd,Vaughan,ON,L4H 0B1,1,,41,,,,,,,,UL Solutions,Haya Soghrati,32
+39,Screenco,Jayme Tilley,905-669-9440 ext 223,j.tilley@screenco.com,290 Millway Ave,Concord,ON,L4K 3W4,1,,42,,,,,,,,UL Solutions,Le Tantoulos,33
+40,Yarrow Sash & Door,Mick Neufeld,204-586-2794,mick@yarrow.mb.ca,969 Fife Street,Winnipeg,MB,R2X 2T9,1,,43,,,,,,,,UL Solutions,Jackie Chiu,34
+41,RSVP Agency,Eric Diotte,613-410-8366,eric@rsvpagency.com,1704 Boisbriand Cres,Ottawa,ON,K1C 4T9,0,,44,,,,,,,,VanAir,Sumeet Goswami,21
+42,Mennie,Mark Williams,416-748-0088 ext 205,mdwcrw@live.ca,"615 Bowes Road, Unit 10",Concord,ON,L4K 1J5,0,,45,,,,,,,,Vision Extrusions Group,John Todd,11
+43,FlexScreen,Mark Straub,905-264-8484,mark@flexscreencanada.com,21 Haist Avenue,Woodbridge,ON,L4L 5V5,1,,46,,,,,,,,Weika Windows,Jack Yao,10
+44,Trimlite Mfg Inc,Eddie Choe,604-533-4111,eddiec@trimlite.com,103-19350 Enterprise Way,Surrey,BC,V3S 6J9,1,,47,,,,,,,,Yarrow Sash & Door,Mick Neufeld,43
+45,Standard Doors,Robert Beal,289-260-2211,robert.beal@standarddoors.com,2300 Francis-Hughes Ave,Laval,QC,H7S 2C1,1,,48

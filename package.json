@@ -1,0 +1,28 @@
+{
+  "name": "plm-cms-meeting-tracker",
+  "version": "1.0.0",
+  "description": "In-house meeting tracker CMS with contact timeline and business-card OCR",
+  "main": "server/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "keywords": [
+    "cms",
+    "meetings",
+    "contacts",
+    "ocr"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "multer": "^2.0.2",
+    "tesseract.js": "^5.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

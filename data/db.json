@@ -1,0 +1,1940 @@
+{
+  "users": [
+    {
+      "id": "jeffrey-pigeon",
+      "name": "Jeffrey Pigeon",
+      "role": "Director of Product and Marketing",
+      "email": "",
+      "phone": "",
+      "notes": "",
+      "updatedAt": null,
+      "passwordHash": "",
+      "passwordSalt": ""
+    },
+    {
+      "id": "russ-miller",
+      "name": "Russ Miller",
+      "role": "Senior Product Manager",
+      "email": "",
+      "phone": "",
+      "notes": "",
+      "updatedAt": null,
+      "passwordHash": "",
+      "passwordSalt": ""
+    },
+    {
+      "id": "ab-chowdhry",
+      "name": "AB Chowdhry",
+      "role": "Retail Marketing Specialist",
+      "email": "",
+      "phone": "",
+      "notes": "",
+      "updatedAt": "2026-05-01T21:26:25.627Z",
+      "passwordHash": "5169a9d13dc7a1b66f46b59df5a06e788438f3f58bea79d4180228f490de83ec6f7adbea58146678760bd68219c3a548c9090846b425b5baf6aad8c363726cd4",
+      "passwordSalt": "6259f1a088953aee8ebdb35b4ef53504"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "a03e14ed-d78a-4acc-8c6b-1d6c52a7b1d0",
+      "name": "Russ Miller",
+      "company": "JELD-WEN",
+      "title": "",
+      "email": "rumiller@jeldwen.com",
+      "phone": "226-919-8759",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "0292157a-cfa4-4276-8b9c-558054e26689",
+          "type": "note",
+          "text": "Legacy address: 5750 Explorer Drive, Unit 402, Mississauga, ON, L4W 5K9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "763e93b9-a581-4a21-8ff7-f623d14fecab",
+          "type": "note",
+          "text": "In-person Meeting: Meeting with self (30 min)",
+          "createdAt": "2025-12-02T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Test 2"
+        },
+        {
+          "id": "fb953d8f-16d3-497a-a172-8963002e7aae",
+          "type": "note",
+          "text": "Letter: testing the form to see how it works (30 min)",
+          "createdAt": "2025-11-26T16:15:00Z",
+          "createdById": null,
+          "createdByName": "Testing form"
+        }
+      ]
+    },
+    {
+      "id": "bfca98b9-7bc0-4eeb-8819-80ea7f54ddca",
+      "name": "Eugene Bezsosiednii",
+      "company": "Attraverso",
+      "title": "",
+      "email": "",
+      "phone": "647-202-7372",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "631d1398-a955-4469-901b-fef523c7e995",
+          "type": "note",
+          "text": "Legacy address: 6141 Atlantic Drive, Unit 1-2, Mississauga, ON, L5T 1L9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "2f35b39d-66bf-4fb5-ae36-db65c8cafd25",
+          "type": "note",
+          "text": "Letter: Aluminum clad wood windows and doors (15 min)",
+          "createdAt": "2025-12-05T09:15:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "e760e370-0bfd-4df3-b7ec-fa4ef65ffc87",
+      "name": "Alireza Narenjkar",
+      "company": "Casa Loma Group Inc",
+      "title": "",
+      "email": "info@casalomadoors.com",
+      "phone": "949-346-7275",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "b1ccb30e-e284-4e44-92ec-c19070553ae1",
+          "type": "note",
+          "text": "Letter: Cheif Executive Officer (15 min)",
+          "createdAt": "2025-12-02T15:30:00Z",
+          "createdById": null,
+          "createdByName": "Alireza's role"
+        }
+      ]
+    },
+    {
+      "id": "0ab1fc4c-39c1-4290-98dd-ab04e9305b30",
+      "name": "Marco Trudel",
+      "company": "Giltek",
+      "title": "",
+      "email": "marco.trudel@giltek.ca",
+      "phone": "418-774-3671",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "e08f9212-ac86-4711-9a0f-ffd7792c6dc8",
+          "type": "note",
+          "text": "Legacy address: 3703 Route Kennedy, Notre-Dames-Des-Pins, QC, G0M 1K0",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "826fbfad-0582-4e47-8ad1-57c7c0221940",
+          "type": "note",
+          "text": "Letter: Stained finish on FG slabs for DF (15 min)",
+          "createdAt": "2025-12-05T09:15:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "0f4c2598-2965-4366-affd-425bdde31de5",
+          "type": "note",
+          "text": "Letter: Cell 418-226-9220; VP Sales & Marketing (15 min)",
+          "createdAt": "2025-12-02T15:15:00Z",
+          "createdById": null,
+          "createdByName": "Marco's role"
+        }
+      ]
+    },
+    {
+      "id": "cbd254f5-df71-4120-b9d7-f6fcc8cbf998",
+      "name": "Daniel Custodio",
+      "company": "ODL",
+      "title": "",
+      "email": "daniel.custodio@odl.com",
+      "phone": "226-387-4394",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "58246db0-d7fb-4dd1-a4c2-37e3b2e125dd",
+          "type": "note",
+          "text": "Legacy address: 20 Vaughan Valley Blvd, Vaughan, ON, L4H 0B1",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "f370ea29-e044-488e-b43b-d310d3a36def",
+          "type": "note",
+          "text": "Letter: Dorr lites, steel slabs, FG slabs (15 min)",
+          "createdAt": "2025-12-05T09:30:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "c409cdf2-c7dc-43ff-94a8-0180510c5b6c",
+          "type": "note",
+          "text": "Letter: VP Sales Canada (15 min)",
+          "createdAt": "2025-12-02T15:30:00Z",
+          "createdById": null,
+          "createdByName": "Daniel's role"
+        }
+      ]
+    },
+    {
+      "id": "1d22511f-b0d3-4556-a278-d0a55e975fd5",
+      "name": "Joe Erb",
+      "company": "Quanex NA Fenestration",
+      "title": "",
+      "email": "joe.erb@quanex.com",
+      "phone": "740-439-6412",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "e38a8073-6198-4323-bc88-a256732e3f60",
+          "type": "note",
+          "text": "Legacy address: 388 S Main St, Suite 700, Akron, OH, 44311",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "cd524d2f-c2e4-4289-951b-4a4ca3554d83",
+          "type": "note",
+          "text": "Letter: Window hardware (15 min)",
+          "createdAt": "2025-12-05T09:30:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "a7b8cd79-4f41-4358-8610-8ab97c055e39",
+          "type": "note",
+          "text": "Letter: NAM & Commercial Account Specialist (15 min)",
+          "createdAt": "2025-12-02T15:30:00Z",
+          "createdById": null,
+          "createdByName": "Joe's role"
+        }
+      ]
+    },
+    {
+      "id": "9b68dd24-cb0c-40a3-8042-3961bbd266c0",
+      "name": "Jack Yao",
+      "company": "Weika Windows",
+      "title": "",
+      "email": "weika@weika.co",
+      "phone": "",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "d0155ff0-2d91-4f5c-b23f-ea853a5842bb",
+          "type": "note",
+          "text": "Letter: Vinyl windows from China (15 min)",
+          "createdAt": "2025-12-05T09:30:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "92408097-6019-4042-aaee-8695512c28a6",
+          "type": "note",
+          "text": "Letter: Chinese exporter of windows (15 min)",
+          "createdAt": "2025-12-02T15:30:00Z",
+          "createdById": null,
+          "createdByName": "Exporter"
+        }
+      ]
+    },
+    {
+      "id": "addd9c84-e732-4e82-b705-570bafcad1a0",
+      "name": "John Todd",
+      "company": "Vision Extrusions Group",
+      "title": "",
+      "email": "jtodd@vexgroup.com",
+      "phone": "647-338-7396",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "520754b7-62b5-4a9b-84c1-06caf53f0b9f",
+          "type": "note",
+          "text": "Legacy address: 201 Zenway Blvd, Woodbridge, ON, L4H 3H9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "016c08fc-eb6c-4ed7-b76c-36a024d612cf",
+          "type": "note",
+          "text": "Letter: Vinyl extrusions, finishes and coatings (15 min)",
+          "createdAt": "2025-12-05T09:30:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "4e127af9-d394-4617-8d60-5624f4c0826c",
+          "type": "note",
+          "text": "Letter: VP Inside Sales (office phone 905-265-9970) (15 min)",
+          "createdAt": "2025-12-02T15:30:00Z",
+          "createdById": null,
+          "createdByName": "John's role"
+        }
+      ]
+    },
+    {
+      "id": "dd0de870-e591-46bb-b60f-78151b1e77bd",
+      "name": "Mark Fafard",
+      "company": "Madero",
+      "title": "",
+      "email": "",
+      "phone": "306-220-8686",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "82dc076f-5be0-49f3-8514-5bfb563c5055",
+          "type": "note",
+          "text": "Legacy address: 327 Wheeler Place, Sakatoon, SK, S7P 0A4",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "b043d9d1-5781-4d1e-a5ec-939e0e59c8cb",
+          "type": "note",
+          "text": "Letter: Exec VP of West Four (15 min)",
+          "createdAt": "2025-12-02T16:00:00Z",
+          "createdById": null,
+          "createdByName": "Mark's role"
+        }
+      ]
+    },
+    {
+      "id": "2709d6ca-9ef8-4f04-8329-262c41e73ae3",
+      "name": "Robert Pollak",
+      "company": "Aribell",
+      "title": "",
+      "email": "robert@aribell.ca",
+      "phone": "905-669-5001",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "70c48b0c-d293-458c-9c8a-d6e1d613f121",
+          "type": "note",
+          "text": "Legacy address: 380 Four Valley Drive, Concord, ON, L4K 5Z1",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "6235ad9e-672d-4fdf-8368-17ebe7a8ea71",
+          "type": "note",
+          "text": "Letter: door components (15 min)",
+          "createdAt": "2025-12-05T09:15:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "786de1ed-9275-4e7e-9f17-392a14d344a9",
+          "type": "note",
+          "text": "Letter: Sales (15 min)",
+          "createdAt": "2025-12-02T16:00:00Z",
+          "createdById": null,
+          "createdByName": "Robert's role"
+        }
+      ]
+    },
+    {
+      "id": "be12b831-ca08-48f1-a63f-f80062c6af13",
+      "name": "Robert Latour",
+      "company": "Novatech",
+      "title": "",
+      "email": "robert.latour@groupenovatech.com",
+      "phone": "514-895-6932",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "d9f0a9f6-5ed5-4d1b-8b45-a6b314cdee4a",
+          "type": "note",
+          "text": "Legacy address: 160, rue Murano, Sainte-Julie, QC, J3E 0C6",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "4dfa1bf7-7354-446d-8201-4a0aaba409f5",
+          "type": "note",
+          "text": "Letter: Door glass, patio doors, steel slabs (15 min)",
+          "createdAt": "2025-12-05T09:15:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "b93bcf41-0f9b-4f74-a869-bab016a99da6",
+          "type": "note",
+          "text": "Letter: VP Sales (15 min)",
+          "createdAt": "2025-12-02T16:00:00Z",
+          "createdById": null,
+          "createdByName": "Robert's role"
+        }
+      ]
+    },
+    {
+      "id": "88fa059c-c0d7-4d87-9d83-394fdc1bb838",
+      "name": "John Wolak",
+      "company": "Elton Manufacturing",
+      "title": "",
+      "email": "jwolak@eltonmanufacturing.com",
+      "phone": "647-355-2150",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "a183d54f-4981-41ae-9ba6-e38f75b7b0e6",
+          "type": "note",
+          "text": "Legacy address: 1265 Aerowood Dr, Mississauga, ON, L4W 1B9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "a5e7217b-d4b0-4487-970f-a5d39af2f500",
+          "type": "note",
+          "text": "Letter: Door lite kits (15 min)",
+          "createdAt": "2025-12-05T09:15:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "62c83bc8-d480-4268-a51e-32599c4bec0a",
+          "type": "note",
+          "text": "Letter: Director of Commercial development (15 min)",
+          "createdAt": "2025-12-02T16:15:00Z",
+          "createdById": null,
+          "createdByName": "John's Role"
+        }
+      ]
+    },
+    {
+      "id": "1872dfb8-3e86-42a6-b9a2-3b9004acb07d",
+      "name": "Danny Lin",
+      "company": "Richersons Ent Ltd",
+      "title": "",
+      "email": "d.lin@richersons.com",
+      "phone": "416-451-1745",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "88766fef-1634-466e-a0f6-658e1720b1f9",
+          "type": "note",
+          "text": "Legacy address: 54 West Beaver Creek Rd, Unit 100, Richmond Hill, ON, L4B 1G5",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "0e51c675-0dc6-472f-bb4f-c04e29d3a96f",
+          "type": "note",
+          "text": "Letter: FG slabs (15 min)",
+          "createdAt": "2025-12-05T09:30:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "f1b0660f-8a0c-4488-abee-dbe9b8431895",
+          "type": "note",
+          "text": "Letter: Sales & Ops Mgr (office tel 905-731-5627) (15 min)",
+          "createdAt": "2025-12-02T16:15:00Z",
+          "createdById": null,
+          "createdByName": "Danny's role"
+        }
+      ]
+    },
+    {
+      "id": "37e275a4-bc09-4fa0-9cd2-5336dd885784",
+      "name": "Alireza Narenjkar",
+      "company": "Craft Door",
+      "title": "",
+      "email": "alireza@craftdoor.com",
+      "phone": "416-919-1714",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "48598e8c-8cb0-4a41-97fb-14466e3e4ada",
+          "type": "note",
+          "text": "Legacy address: 77 Courtland Ave, Unit 4, Concord, ON, L4K 3S9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "54e623ad-86fe-45a7-985b-fd29bb481949",
+          "type": "note",
+          "text": "Letter: CEO (office number 416-635-1714) (15 min)",
+          "createdAt": "2025-12-02T16:15:00Z",
+          "createdById": null,
+          "createdByName": "Alizer's role"
+        }
+      ]
+    },
+    {
+      "id": "0f957583-dde1-4017-aee9-85f492524aaf",
+      "name": "Andrew Beavan",
+      "company": "Elton Manufacturing",
+      "title": "",
+      "email": "andrew@eltonmanufacturing.com",
+      "phone": "905-302-6960",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "7af6d321-b059-4870-af02-2b816ebbb0f5",
+          "type": "note",
+          "text": "Legacy address: 1265 Aerowood Dr, Mississauga, ON, L4W 1B9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "c241fd01-46e0-4e3d-9c11-b0d98a50babd",
+          "type": "note",
+          "text": "Letter: Door lite kits (15 min)",
+          "createdAt": "2025-12-05T09:15:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "36e8f309-7b57-45b6-9b00-8b6d18853806",
+          "type": "note",
+          "text": "Letter: VP of Sales (15 min)",
+          "createdAt": "2025-12-02T16:30:00Z",
+          "createdById": null,
+          "createdByName": "Andrew's role"
+        }
+      ]
+    },
+    {
+      "id": "b78decdb-365a-4f6b-b58c-33e1b0bcc36e",
+      "name": "Sanford",
+      "company": "Nan Ya Plastics Corporation",
+      "title": "",
+      "email": "sanford.tsai@gmail.com",
+      "phone": "",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "3c749245-2363-4fbe-8bbc-0449c35b1ba5",
+          "type": "note",
+          "text": "Legacy address: Taipei, Taiwan",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "69116d76-6dad-4765-af39-988446a92e0d",
+          "type": "note",
+          "text": "Letter: Sales Manager (15 min)",
+          "createdAt": "2025-12-05T08:30:00Z",
+          "createdById": null,
+          "createdByName": "Sanford's role"
+        }
+      ]
+    },
+    {
+      "id": "0b9df10b-951c-4912-8e07-8adae46ac2f2",
+      "name": "Elio Rotondi",
+      "company": "Concord Woodworking",
+      "title": "",
+      "email": "office@concordwoodworking.com",
+      "phone": "905-669-3980",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "9cfe8ed9-302d-4d2b-b6e7-0277025d7b7f",
+          "type": "note",
+          "text": "Legacy address: 100 Spinnaker Way, Concord, ON, L4K 2P6",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "70e1cb1b-3db8-4ace-b94b-32890b85239c",
+          "type": "note",
+          "text": "Letter: Display fixtures (15 min)",
+          "createdAt": "2025-12-05T09:15:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "2c727c24-6eec-451b-9033-5c4cb8af160f",
+      "name": "Sumeet Goswami",
+      "company": "VanAir",
+      "title": "",
+      "email": "sumeet@vanairdesign.com",
+      "phone": "604-757-1374, Ext 15",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "06a47860-5652-45a6-af03-b4ef44179d19",
+          "type": "note",
+          "text": "Legacy address: 2-7315 Meadow Ave, Burnaby, BC, V5J 4Z2",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "3d676be7-d1f4-4957-a90b-7946b6111a75",
+          "type": "note",
+          "text": "Letter: Vent kits for interior doors (15 min)",
+          "createdAt": "2025-12-05T09:30:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "d89736d8-ac95-4c50-a79e-d8bde7cd4fbf",
+          "type": "note",
+          "text": "Letter: Director of Business Development (15 min)",
+          "createdAt": "2025-12-05T08:45:00Z",
+          "createdById": null,
+          "createdByName": "Sumeet's role"
+        }
+      ]
+    },
+    {
+      "id": "011a9fa0-d0bb-4788-b09b-24fe681d197a",
+      "name": "Ron VandenBrink",
+      "company": "Trimlite Mfg Inc.",
+      "title": "",
+      "email": "ronv@trimlite.com",
+      "phone": "905-464-5261",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "edf9d76e-f960-42cd-8b27-c94e5821e85f",
+          "type": "note",
+          "text": "Legacy address: 4385 Mainway, Burlington, ON, L7L 7P2",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "921c42bd-3ae4-4a37-903f-7fce537c9cdd",
+          "type": "note",
+          "text": "Letter: Door lites, shaker slabs (15 min)",
+          "createdAt": "2025-12-05T09:30:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "e29c4d32-510a-459d-ab83-d8c2f1b7446a",
+          "type": "note",
+          "text": "Letter: VP & GM 905-335-1559 x225 (15 min)",
+          "createdAt": "2025-12-05T08:45:00Z",
+          "createdById": null,
+          "createdByName": "Ron's role"
+        }
+      ]
+    },
+    {
+      "id": "52fc74dd-6456-4049-ae41-4da69a4ce59b",
+      "name": "Marco Patermann",
+      "company": "Continental",
+      "title": "",
+      "email": "marco.patermann@marcorp.global",
+      "phone": "540-550-4596",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "1c7cc273-c550-43e9-ac32-e6e847ef307b",
+          "type": "note",
+          "text": "Legacy address: Lima, OH, 45805",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "bb8db203-4ff0-4568-8142-589d3588d1ca",
+          "type": "note",
+          "text": "Letter: FiniShield laminate (15 min)",
+          "createdAt": "2025-12-05T09:15:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "92a27f7a-79d7-4632-9749-0166faacf0fb",
+      "name": "Joseph Slonimsky",
+      "company": "Assa Abloy",
+      "title": "",
+      "email": "josheph.slonimsky@assaabloydss.com",
+      "phone": "647-395-3871",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "bce2fdf5-194f-4150-abcf-3acdad32e1cf",
+          "type": "note",
+          "text": "Legacy address: 160 Four Valley Drive, Vaughan, ON, L4K 4T9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "b1f835a1-6488-4a98-9026-b698db93e61f",
+          "type": "note",
+          "text": "Letter: Sales rep (15 min)",
+          "createdAt": "2025-12-09T08:30:00Z",
+          "createdById": null,
+          "createdByName": "Joseph's role"
+        },
+        {
+          "id": "1c4f9cb7-404f-41d9-bdaf-b00b380f051d",
+          "type": "note",
+          "text": "Letter: Hardware, hinges (15 min)",
+          "createdAt": "2025-12-09T08:00:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "8307b7f4-c41a-4c06-9807-265faac42390",
+      "name": "Bill Liu",
+      "company": "North Tech",
+      "title": "",
+      "email": "dept06@northtechwindowscn.com",
+      "phone": "604-248-8285",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "e00b2ff2-1daa-4d21-89de-680fb53b443a",
+          "type": "note",
+          "text": "Legacy address: 1151 Georgia St, Vancouver, BC, V6E 0B3",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "c493f518-4b5c-478a-8bf9-4c3c8715b270",
+          "type": "note",
+          "text": "Letter: Global sales (15 min)",
+          "createdAt": "2025-12-09T08:45:00Z",
+          "createdById": null,
+          "createdByName": "Bill's role"
+        }
+      ]
+    },
+    {
+      "id": "7512b1c6-168c-4a0d-b93f-5ebb7f5c527f",
+      "name": "Dany Ding",
+      "company": "Qingdao",
+      "title": "",
+      "email": "danny@qingdafortune.com",
+      "phone": "",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "c2c87da7-bf30-456b-a535-144ba456370f",
+          "type": "note",
+          "text": "Letter: Sales manager (15 min)",
+          "createdAt": "2025-12-09T11:45:00Z",
+          "createdById": null,
+          "createdByName": "Danny's role"
+        },
+        {
+          "id": "3b8d1a4b-52c4-485f-8146-d36d36ba3e54",
+          "type": "note",
+          "text": "Letter: Vented doors, int drs, ext doors, sells to THD USA (15 min)",
+          "createdAt": "2025-12-09T11:45:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "20ac51f6-4b04-45fc-a1eb-32ac1303c5d9",
+      "name": "Paul Alarie",
+      "company": "Convenience Group",
+      "title": "",
+      "email": "palarie@conveniencegroup.com",
+      "phone": "647-466-9996",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "0d815f6a-4482-4095-81df-043d7264c460",
+          "type": "note",
+          "text": "Legacy address: 10 Butterick Road, Toronto, ON, M8W 3Z8",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "e6b6071d-90d5-4d46-a699-be5dd2e885d0",
+          "type": "note",
+          "text": "Letter: Sales manager (15 min)",
+          "createdAt": "2025-12-09T11:45:00Z",
+          "createdById": null,
+          "createdByName": "Paul role"
+        },
+        {
+          "id": "d05a10eb-4b5b-42b4-9faa-8616ac4b9de4",
+          "type": "note",
+          "text": "Letter: Bird glass film, 3M coatings (15 min)",
+          "createdAt": "2025-12-09T11:45:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "ae3f518f-0d62-402e-84a3-8c8e3db9932a",
+      "name": "Matthew Denley",
+      "company": "Convenience Group",
+      "title": "",
+      "email": "mdenley@conveniencegroup.com",
+      "phone": "647-237-2537",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "8a93b815-852b-4ab2-910b-e6b019d5fcd7",
+          "type": "note",
+          "text": "Legacy address: 10 Butterick Road, Tornto, ON, M8W 3Z8",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "37e51b18-9346-4f9b-88ec-96eba42f6a69",
+          "type": "note",
+          "text": "Letter: Business Develoment Manager (15 min)",
+          "createdAt": "2025-12-09T11:45:00Z",
+          "createdById": null,
+          "createdByName": "Matthew's role"
+        },
+        {
+          "id": "831c21f4-3184-4f9b-a9af-4ec1ffbd7472",
+          "type": "note",
+          "text": "Letter: Bird glass film, 3M coatings (15 min)",
+          "createdAt": "2025-12-09T11:45:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "134f1235-1485-423e-acb8-3ddc56651f7d",
+      "name": "Norman Chen",
+      "company": "NF Windows & Doors",
+      "title": "",
+      "email": "norman0602@aluwf.com",
+      "phone": "",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "12252c4e-207d-407f-bf5c-44187e5b619b",
+          "type": "note",
+          "text": "Letter: Aluminum windows and doors (15 min)",
+          "createdAt": "2025-12-09T14:45:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "789b8ab0-6b0c-494c-8bd1-6142e95a9971",
+      "name": "Alex Nickel",
+      "company": "Fentro",
+      "title": "",
+      "email": "alex.nickel@fentro.com",
+      "phone": "905-515-4853",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "040aec31-bf41-40cf-aa49-cb0f6375b30b",
+          "type": "note",
+          "text": "Legacy address: 150 Grant St, Morden, MB",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "2520f398-61f6-4e6c-b862-f4c98af87d49",
+          "type": "note",
+          "text": "Letter: Window installation components (15 min)",
+          "createdAt": "2026-05-01T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Products"
+        },
+        {
+          "id": "5c7e3309-e2b4-4a38-8de5-543083034dde",
+          "type": "note",
+          "text": "Letter: Product manager (15 min)",
+          "createdAt": "2025-12-09T14:45:00Z",
+          "createdById": null,
+          "createdByName": "Alex's role"
+        }
+      ]
+    },
+    {
+      "id": "2fc62fcf-2819-4381-9552-ec39eb352d97",
+      "name": "Raisa Temnova",
+      "company": "Attraverso",
+      "title": "",
+      "email": "r.temnova@attraverso.ca",
+      "phone": "416-570-3032",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "e86be343-8a96-45fb-92d2-45045c07c77a",
+          "type": "note",
+          "text": "Legacy address: 6141 Atlantic Drive, Unit 1-2, Mississauga, ON, L5T 1L9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "ce9513aa-8d8b-4f78-adc9-ac56fe208eea",
+          "type": "note",
+          "text": "Letter: Managing director Marking & Operatons (15 min)",
+          "createdAt": "2025-12-09T15:45:00Z",
+          "createdById": null,
+          "createdByName": "Raisa's role"
+        },
+        {
+          "id": "f6fd5428-7d1a-4205-aa67-d28a0c95a15d",
+          "type": "note",
+          "text": "Letter: Aluminum clad wood windows (15 min)",
+          "createdAt": "2025-12-05T15:45:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "715645e3-e712-4bfb-b640-2b1d83b05814",
+      "name": "Haya Soghrati",
+      "company": "UL Solutions",
+      "title": "",
+      "email": "haya.soghrati@ul.com",
+      "phone": "647-354-1396",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "65d3f899-8903-4087-a2a2-2d375dd0642b",
+          "type": "note",
+          "text": "Legacy address: 7 Underwriters Rd, Toronto, ON, M1R 3A9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "e2c02b05-2a10-4fbb-b833-68cab0ddf028",
+          "type": "note",
+          "text": "Letter: Business Mgr, building envelope (15 min)",
+          "createdAt": "2025-12-05T15:45:00Z",
+          "createdById": null,
+          "createdByName": "Haya's role"
+        }
+      ]
+    },
+    {
+      "id": "bfd31bee-7b1f-439a-b363-60a5ba6672b8",
+      "name": "Le Tantoulos",
+      "company": "UL Solutions",
+      "title": "",
+      "email": "le.tantoulos@ul.com",
+      "phone": "416-553-1884",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "e3345754-d4d5-4622-8202-5eb6b1e07699",
+          "type": "note",
+          "text": "Legacy address: 7 Underwriters Rd, Toronto, ON, M1R 3A9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "57c458ea-fc7b-45b8-aeb1-567fbb7ccd0c",
+          "type": "note",
+          "text": "Letter: Sales Manager (15 min)",
+          "createdAt": "2025-12-09T15:45:00Z",
+          "createdById": null,
+          "createdByName": "Le's role"
+        }
+      ]
+    },
+    {
+      "id": "e39b8540-9eaf-4e07-ae1b-9304efbf9898",
+      "name": "Jackie Chiu",
+      "company": "UL Solutions",
+      "title": "",
+      "email": "jackie.chiu@ul.com",
+      "phone": "416-228-2524",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "1985bcb0-a6f2-45a3-8b39-a5094dc4dddb",
+          "type": "note",
+          "text": "Legacy address: 7 Underwriters Rd, Toronto, ON, M1R 3A9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "4d9e45e6-c774-4570-9cf4-dcb2641e4522",
+          "type": "note",
+          "text": "Letter: Customer success specialists (15 min)",
+          "createdAt": "2025-12-09T15:45:00Z",
+          "createdById": null,
+          "createdByName": "Jackie's role"
+        }
+      ]
+    },
+    {
+      "id": "ec049d93-6a0d-4505-831e-43e7f26ac047",
+      "name": "Frederic Belisle",
+      "company": "Ferco",
+      "title": "",
+      "email": "belisle.f@ferco.ca",
+      "phone": "418-802-1056",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "a03883ed-de77-4d01-bdd0-11d5d5c30cbb",
+          "type": "note",
+          "text": "Legacy address: 2000, Berlier Street, Laval, QC, H7L 4S4",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "5e5474b5-3361-4622-b681-a1313da35f21",
+          "type": "note",
+          "text": "Letter: Technical representative (15 min)",
+          "createdAt": "2025-12-09T16:00:00Z",
+          "createdById": null,
+          "createdByName": "Frederic's role"
+        },
+        {
+          "id": "3a33cd17-9878-4f6d-ab14-111b36c3f221",
+          "type": "note",
+          "text": "Letter: Door MP locks hardware and handles (15 min)",
+          "createdAt": "2025-12-09T16:00:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "ddff1e13-4cdb-45cf-837b-b785632903c1",
+      "name": "Jeff Meloche",
+      "company": "Sherwin-Williams",
+      "title": "",
+      "email": "jeff.r.meloche@sherwin.com",
+      "phone": "226-387-3161",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "84cfb875-0762-4466-879f-15c2f5706d1f",
+          "type": "note",
+          "text": "Legacy address: 130 Van Kirk Drive, Brampton, ON, L7A 1B1",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "417a86a1-c9ee-4d05-b34c-a71ce275bf4a",
+          "type": "note",
+          "text": "Letter: Sales representative (15 min)",
+          "createdAt": "2025-12-09T16:00:00Z",
+          "createdById": null,
+          "createdByName": "Jeff's role"
+        },
+        {
+          "id": "8aedf041-3a32-415e-b4ba-ca6640825e56",
+          "type": "note",
+          "text": "Letter: Industrial wood/paint coatings (15 min)",
+          "createdAt": "2025-12-09T16:00:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "927ca49c-8969-49db-8e26-10fd7f051717",
+      "name": "Matt de Witt",
+      "company": "Omni Glass",
+      "title": "",
+      "email": "mdewitt@omniglass.com",
+      "phone": "204-291-8237",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "08ab8214-e44f-4fa4-80ea-eda7f64320fe",
+          "type": "note",
+          "text": "Legacy address: 300-100 Hoke Street, Winnipeg, MB, R2C 3N2",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "0174a0a0-b3fa-43ba-accd-71450c347584",
+          "type": "note",
+          "text": "Letter: Engineering Manager (15 min)",
+          "createdAt": "2025-12-09T16:00:00Z",
+          "createdById": null,
+          "createdByName": "Matt's role"
+        }
+      ]
+    },
+    {
+      "id": "aa7aa41b-a2e9-4d84-a6ed-feda26969853",
+      "name": "Monty Grewal",
+      "company": "Fancy Doors & Mouldings",
+      "title": "",
+      "email": "monty@fancydoors.com",
+      "phone": "780-452-6000",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "60dba3bd-316e-4b50-ba25-a35518785f83",
+          "type": "note",
+          "text": "Legacy address: 4421 Roper Road NW, Edmonton, AB, T6B 3S5",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "e641b9bc-47a6-4fc5-bbfe-d764200e42ad",
+          "type": "note",
+          "text": "Letter: President & CEO (15 min)",
+          "createdAt": "2026-01-05T11:45:00Z",
+          "createdById": null,
+          "createdByName": "Monty's role"
+        }
+      ]
+    },
+    {
+      "id": "4d65bf77-709a-40f2-80f3-10d07d6e5e45",
+      "name": "Jacque",
+      "company": "Ningbo Youyou International Co",
+      "title": "",
+      "email": "Youyou@188.com",
+      "phone": "",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "ec865c8f-3d50-49d4-9d5b-7d5fa8247f5c",
+          "type": "note",
+          "text": "Letter: Sales manager (15 min)",
+          "createdAt": "2026-01-05T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Jacque's role"
+        },
+        {
+          "id": "64ce2392-896a-4164-9913-bc128d6b58d2",
+          "type": "note",
+          "text": "Letter: Window hardware (15 min)",
+          "createdAt": "2026-01-05T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Products"
+        }
+      ]
+    },
+    {
+      "id": "6a215690-1401-44c9-8fd6-e4319d06ab6a",
+      "name": "Justin Hamway",
+      "company": "Siga",
+      "title": "",
+      "email": "justin.hamway@siga.swiss",
+      "phone": "416-315-0696",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "37e9b9d8-f458-4873-84ca-f94d5dbd33eb",
+          "type": "note",
+          "text": "Letter: manufaturer representative (15 min)",
+          "createdAt": "2026-01-05T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Justin's role"
+        },
+        {
+          "id": "394996e8-ff59-48c7-abe4-cc91b4cae045",
+          "type": "note",
+          "text": "Letter: Window tapes and flashings (15 min)",
+          "createdAt": "2026-01-05T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Products"
+        }
+      ]
+    },
+    {
+      "id": "83f5d7b2-c56a-464d-9d2c-2b0f6982cbde",
+      "name": "Skip MacLean",
+      "company": "Tru Tech Doors",
+      "title": "",
+      "email": "smaclean@trutechdoors.com",
+      "phone": "905-856-0096 ext 263",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "f3930b30-91e0-4344-9a82-64d34f67c3f9",
+          "type": "note",
+          "text": "Legacy address: 20 Vaughan Valley Blvd, Vaughan, ON, L4H 0B1",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "c788abf9-1ac6-420e-ac57-92a002bf14d4",
+          "type": "note",
+          "text": "Letter: Directore of Business Development (15 min)",
+          "createdAt": "2026-01-05T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Skip's role"
+        },
+        {
+          "id": "589f2c25-21aa-4650-87ce-91db6c870f91",
+          "type": "note",
+          "text": "Letter: 416-908-6415 (15 min)",
+          "createdAt": "2026-01-05T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Skip's cell"
+        }
+      ]
+    },
+    {
+      "id": "99457114-d552-495c-b954-4222ab5b8863",
+      "name": "Jayme Tilley",
+      "company": "Screenco",
+      "title": "",
+      "email": "j.tilley@screenco.com",
+      "phone": "905-669-9440 ext 223",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "3d1e5153-b816-4883-a70c-fd8c53239a8d",
+          "type": "note",
+          "text": "Legacy address: 290 Millway Ave, Concord, ON, L4K 3W4",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "4176afdc-6bf3-4358-90e9-421db8ceca1c",
+          "type": "note",
+          "text": "Letter: Canadian sales manager (15 min)",
+          "createdAt": "2026-01-05T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Jayme's role"
+        },
+        {
+          "id": "34d86adb-fd41-4207-ba2e-7f2c11f97357",
+          "type": "note",
+          "text": "Letter: 416-953-5448 (15 min)",
+          "createdAt": "2026-01-05T14:30:00Z",
+          "createdById": null,
+          "createdByName": "Jayme's cell"
+        }
+      ]
+    },
+    {
+      "id": "4300bb62-cf61-4fab-b300-07cd518ecb6b",
+      "name": "Mick Neufeld",
+      "company": "Yarrow Sash & Door",
+      "title": "",
+      "email": "mick@yarrow.mb.ca",
+      "phone": "204-586-2794",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "eba43ecf-8942-47b9-87b3-744552055413",
+          "type": "note",
+          "text": "Legacy address: 969 Fife Street, Winnipeg, MB, R2X 2T9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "353b5e3c-b88e-443c-9731-e8616183dfde",
+          "type": "note",
+          "text": "Letter: 204-981-9999 (15 min)",
+          "createdAt": "2026-01-05T14:45:00Z",
+          "createdById": null,
+          "createdByName": "Mick's cell number"
+        }
+      ]
+    },
+    {
+      "id": "0b79b0d0-03ae-4a63-a9c1-287c4f27bdc9",
+      "name": "Eric Diotte",
+      "company": "RSVP Agency",
+      "title": "",
+      "email": "eric@rsvpagency.com",
+      "phone": "613-410-8366",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "f624a3c5-6dcb-4f8a-b7d1-d82586a0f614",
+          "type": "note",
+          "text": "Legacy address: 1704 Boisbriand Cres, Ottawa, ON, K1C 4T9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "4cbc1b13-beb5-43fc-8099-6caf55049bdd",
+          "type": "note",
+          "text": "Letter: Commercial glass, adhesives and glazings (15 min)",
+          "createdAt": "2026-01-05T14:45:00Z",
+          "createdById": null,
+          "createdByName": "RSVP Products"
+        }
+      ]
+    },
+    {
+      "id": "39037fcc-8a1a-443e-9d26-5ae4ee8e4693",
+      "name": "Mark Williams",
+      "company": "Mennie",
+      "title": "",
+      "email": "mdwcrw@live.ca",
+      "phone": "416-748-0088 ext 205",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import",
+        "inactive"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "1c6b5f2f-7ef2-4890-900f-d225353a1061",
+          "type": "note",
+          "text": "Legacy address: 615 Bowes Road, Unit 10, Concord, ON, L4K 1J5",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "89b77959-4c70-4949-8d1f-c0473593e4ee",
+          "type": "note",
+          "text": "Letter: Acting CEO; 705-716-4707 (15 min)",
+          "createdAt": "2026-01-05T16:30:00Z",
+          "createdById": null,
+          "createdByName": "Mark's role &cell"
+        },
+        {
+          "id": "8e8f6ff2-b498-46b8-969b-f3d72d76b020",
+          "type": "note",
+          "text": "Letter: Fiberglass slabs (15 min)",
+          "createdAt": "2026-01-05T16:30:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    },
+    {
+      "id": "83fd442f-dae1-40ee-bfce-7210a10fd74d",
+      "name": "Mark Straub",
+      "company": "FlexScreen",
+      "title": "",
+      "email": "mark@flexscreencanada.com",
+      "phone": "905-264-8484",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "2290e680-14ae-4543-816b-8c1aa555b6da",
+          "type": "note",
+          "text": "Legacy address: 21 Haist Avenue, Woodbridge, ON, L4L 5V5",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "c363152e-13e2-467e-a429-84379866ce0d",
+          "type": "note",
+          "text": "Letter: Operating partner 416-708-9288 (15 min)",
+          "createdAt": "2026-01-05T16:30:00Z",
+          "createdById": null,
+          "createdByName": "Marks role & cell"
+        }
+      ]
+    },
+    {
+      "id": "ac2441a8-2dea-4812-8d59-d2795ff1d32e",
+      "name": "Eddie Choe",
+      "company": "Trimlite Mfg Inc",
+      "title": "",
+      "email": "eddiec@trimlite.com",
+      "phone": "604-533-4111",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "ee68bc7e-519b-48c3-8eae-7a439e9905c1",
+          "type": "note",
+          "text": "Legacy address: 103-19350 Enterprise Way, Surrey, BC, V3S 6J9",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "7b1fb48a-f701-4f0f-9e23-491ac96c3734",
+          "type": "note",
+          "text": "Letter: Decorative door lites, shaker style slabs (15 min)",
+          "createdAt": "2026-01-05T16:45:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        },
+        {
+          "id": "ea3f615f-57f1-472a-a888-a1e7cc4f811c",
+          "type": "note",
+          "text": "Letter: Director of Business Development 403-835-6928 (15 min)",
+          "createdAt": "2026-01-05T16:30:00Z",
+          "createdById": null,
+          "createdByName": "Eddie's role & cell"
+        }
+      ]
+    },
+    {
+      "id": "4198b455-3d89-44af-8357-f78fa29c929c",
+      "name": "Robert Beal",
+      "company": "Standard Doors",
+      "title": "",
+      "email": "robert.beal@standarddoors.com",
+      "phone": "289-260-2211",
+      "website": "",
+      "linkedIn": "",
+      "tags": [
+        "legacy-import"
+      ],
+      "nextMeetingDate": "",
+      "createdAt": "2026-05-01T21:29:46Z",
+      "createdById": null,
+      "createdByName": "Legacy Import",
+      "updatedAt": "2026-05-01T21:29:46Z",
+      "updatedById": null,
+      "updatedByName": "Legacy Import",
+      "timeline": [
+        {
+          "id": "0d0416f7-43b4-4fa9-90f4-9271d601ebaf",
+          "type": "note",
+          "text": "Legacy address: 2300 Francis-Hughes Ave, Laval, QC, H7S 2C1",
+          "createdAt": "2026-05-01T21:29:46Z",
+          "createdById": null,
+          "createdByName": "Legacy Import"
+        },
+        {
+          "id": "e1f93b41-a116-4b95-ab3e-54e0c42bc5a8",
+          "type": "note",
+          "text": "Letter: Regional Account Manager (15 min)",
+          "createdAt": "2026-01-05T16:45:00Z",
+          "createdById": null,
+          "createdByName": "Robert's role"
+        },
+        {
+          "id": "935c95cf-c723-4ce8-ad4e-2a2c6cdc759b",
+          "type": "note",
+          "text": "Letter: Patio doors and patio door components (15 min)",
+          "createdAt": "2026-01-05T16:45:00Z",
+          "createdById": null,
+          "createdByName": "Product"
+        }
+      ]
+    }
+  ]
+}
