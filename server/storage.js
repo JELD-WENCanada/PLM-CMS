@@ -1,12 +1,8 @@
 const fs = require("fs/promises");
 const path = require("path");
 const crypto = require("crypto");
-const { Pool } = require("pg");
-const { get, put } = require("@vercel/blob");
 
-const DB_PATH = path.join(__dirname, "..", "data", "db.json");
-const BLOB_DB_PATH = process.env.BLOB_DB_PATH || "plm-cms/db.json";
-const STATE_KEY = "main";
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, "..", "data", "db.json");
 const DEFAULT_USERS = [
   {
     id: "jeffrey-pigeon",
@@ -141,74 +137,6 @@ function getActor(db, actorId) {
   return actor;
 }
 
-function shouldUseBlobStorage() {
-  return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
-}
-
-function shouldUsePostgresStorage() {
-  return Boolean(process.env.DATABASE_URL);
-}
-
-let pgPool = null;
-let pgReady = false;
-
-function sanitizeDatabaseUrl(rawUrl) {
-  try {
-    const url = new URL(rawUrl);
-    url.searchParams.delete("sslmode");
-    url.searchParams.delete("sslcert");
-    url.searchParams.delete("sslkey");
-    url.searchParams.delete("sslrootcert");
-    return url.toString();
-  } catch (_error) {
-    return rawUrl;
-  }
-}
-
-function getDatabaseIdentity(rawUrl) {
-  try {
-    const url = new URL(rawUrl);
-    const dbName = (url.pathname || "/").replace(/^\//, "") || "postgres";
-    return `${decodeURIComponent(url.username || "unknown")}@${url.hostname}:${url.port || "5432"}/${dbName}`;
-  } catch (_error) {
-    return "unknown-database-target";
-  }
-}
-
-function getPgPool() {
-  if (!pgPool) {
-    const sslMode = String(process.env.PGSSLMODE || "").toLowerCase();
-    const disableSsl = sslMode === "disable";
-    const noVerify =
-      sslMode === "no-verify" ||
-      process.env.PGSSL_NO_VERIFY === "1" ||
-      process.env.PGSSL_NO_VERIFY === "true" ||
-      process.env.NODE_ENV === "production";
-
-    pgPool = new Pool({
-      connectionString: sanitizeDatabaseUrl(process.env.DATABASE_URL),
-      ssl: disableSsl ? false : { rejectUnauthorized: !noVerify },
-    });
-  }
-  return pgPool;
-}
-
-async function ensurePgReady() {
-  if (pgReady) {
-    return;
-  }
-
-  const pool = getPgPool();
-  await pool.query(`
-    CREATE TABLE IF NOT EXISTS app_state (
-      state_key TEXT PRIMARY KEY,
-      payload JSONB NOT NULL,
-      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-    )
-  `);
-  pgReady = true;
-}
-
 function isReadOnlyFsError(error) {
   return error && ["EROFS", "EPERM", "EACCES"].includes(error.code);
 }
@@ -225,62 +153,6 @@ async function readSeedDb() {
   }
 }
 
-async function readDbFromBlob() {
-  const blob = await get(BLOB_DB_PATH, {
-    access: "private",
-    token: process.env.BLOB_READ_WRITE_TOKEN,
-    useCache: false,
-  });
-
-  if (!blob) {
-    return readSeedDb();
-  }
-
-  const raw = await new Response(blob.stream).text();
-  return JSON.parse(raw);
-}
-
-async function writeDbToBlob(db) {
-  await put(BLOB_DB_PATH, JSON.stringify(db, null, 2), {
-    access: "private",
-    token: process.env.BLOB_READ_WRITE_TOKEN,
-    allowOverwrite: true,
-    addRandomSuffix: false,
-    contentType: "application/json",
-  });
-}
-
-async function readDbFromPostgres() {
-  await ensurePgReady();
-  const pool = getPgPool();
-  const result = await pool.query(
-    "SELECT payload FROM app_state WHERE state_key = $1 LIMIT 1",
-    [STATE_KEY]
-  );
-
-  if (!result.rows.length) {
-    const seed = normalizeDb(await readSeedDb());
-    await writeDbToPostgres(seed);
-    return seed;
-  }
-
-  return result.rows[0].payload;
-}
-
-async function writeDbToPostgres(db) {
-  await ensurePgReady();
-  const pool = getPgPool();
-  await pool.query(
-    `
-      INSERT INTO app_state (state_key, payload, updated_at)
-      VALUES ($1, $2::jsonb, NOW())
-      ON CONFLICT (state_key)
-      DO UPDATE SET payload = EXCLUDED.payload, updated_at = NOW()
-    `,
-    [STATE_KEY, JSON.stringify(db)]
-  );
-}
-
 function normalizeDb(parsed) {
   if (!Array.isArray(parsed.contacts)) {
     parsed.contacts = [];
@@ -292,68 +164,23 @@ function normalizeDb(parsed) {
 
 async function readDb() {
   try {
-    let parsed;
-    if (shouldUsePostgresStorage()) {
-      try {
-        parsed = await readDbFromPostgres();
-      } catch (error) {
-        const target = getDatabaseIdentity(process.env.DATABASE_URL || "");
-        throw new Error(
-          `Postgres connection failed for ${target}. ${error.message || ""}`.trim()
-        );
-      }
-    } else if (shouldUseBlobStorage()) {
-      parsed = await readDbFromBlob();
-    } else {
-      parsed = JSON.parse(await fs.readFile(DB_PATH, "utf-8"));
-    }
+    const parsed = JSON.parse(await fs.readFile(DB_PATH, "utf-8"));
     return normalizeDb(parsed);
   } catch (error) {
     if (error.code === "ENOENT") {
-      return { users: ensureUsers([]), contacts: [] };
+      return normalizeDb(await readSeedDb());
     }
     throw error;
   }
 }
 
 async function writeDb(db) {
-  const payload = JSON.stringify(db, null, 2);
-
-  if (shouldUsePostgresStorage()) {
-    try {
-      await writeDbToPostgres(db);
-      return;
-    } catch (error) {
-      const target = getDatabaseIdentity(process.env.DATABASE_URL || "");
-      throw new Error(
-        `Postgres storage write failed for ${target}. Check DATABASE_URL and database access. ${error.message || ""}`.trim()
-      );
-    }
-  }
-
-  if (shouldUseBlobStorage()) {
-    try {
-      await writeDbToBlob(db);
-      return;
-    } catch (error) {
-      throw new Error(
-        `Blob storage write failed. Check BLOB_READ_WRITE_TOKEN and Blob store access. ${error.message || ""}`.trim()
-      );
-    }
-  }
-
-  if (process.env.VERCEL) {
-    throw new Error(
-      "No writable production storage configured. Set DATABASE_URL (recommended) or BLOB_READ_WRITE_TOKEN and redeploy."
-    );
-  }
-
   try {
-    await fs.writeFile(DB_PATH, payload, "utf-8");
+    await fs.writeFile(DB_PATH, JSON.stringify(db, null, 2), "utf-8");
   } catch (error) {
     if (isReadOnlyFsError(error)) {
       throw new Error(
-        "Local storage path is read-only. Configure writable storage before saving changes."
+        "Storage path is read-only. Set DB_PATH to a writable location (for example a Railway volume mount)."
       );
     }
     throw error;

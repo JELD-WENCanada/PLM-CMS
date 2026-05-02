@@ -35,6 +35,17 @@ A lightweight in-house web app to track people you meet, their business details,
 
    http://localhost:3000
 
+## Deploy On Railway (JSON Storage)
+
+This app can run with plain JSON storage on Railway when you mount a persistent volume.
+
+1. Create a Railway project and deploy this repository.
+2. Add a persistent volume (for example mounted at `/data`).
+3. Set environment variable `DB_PATH=/data/db.json`.
+4. Ensure Railway starts the app with `npm start`.
+
+If `DB_PATH` is not set, the app defaults to `data/db.json` in the project folder.
+
 ## API Overview
 
 - `GET /api/users`: List team users
@@ -52,3 +63,4 @@ A lightweight in-house web app to track people you meet, their business details,
 
 - OCR extraction quality depends on image clarity and card design.
 - Uploaded files are temporary and deleted after OCR processing.
+- For production JSON persistence, the runtime filesystem must be writable and persistent (Railway volume, VPS disk, etc.).
