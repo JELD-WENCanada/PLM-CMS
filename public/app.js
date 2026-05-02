@@ -586,6 +586,66 @@ async function api(path, options = {}) {
   return data;
 }
 
+function loadImageFromObjectUrl(objectUrl) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error("Unable to read image"));
+    image.src = objectUrl;
+  });
+}
+
+async function prepareOcrImage(file) {
+  if (!(file instanceof File) || !file.type.startsWith("image/")) {
+    return file;
+  }
+
+  const objectUrl = URL.createObjectURL(file);
+  try {
+    const image = await loadImageFromObjectUrl(objectUrl);
+    const maxEdge = 1400;
+    const longest = Math.max(image.naturalWidth, image.naturalHeight);
+    const scale = longest > maxEdge ? maxEdge / longest : 1;
+
+    const targetWidth = Math.max(1, Math.round(image.naturalWidth * scale));
+    const targetHeight = Math.max(1, Math.round(image.naturalHeight * scale));
+
+    const canvas = document.createElement("canvas");
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    const context = canvas.getContext("2d", { alpha: false });
+    if (!context) {
+      return file;
+    }
+
+    context.fillStyle = "#ffffff";
+    context.fillRect(0, 0, targetWidth, targetHeight);
+    context.drawImage(image, 0, 0, targetWidth, targetHeight);
+
+    const blob = await new Promise((resolve) => {
+      canvas.toBlob(
+        (nextBlob) => resolve(nextBlob),
+        "image/jpeg",
+        0.82
+      );
+    });
+
+    if (!blob) {
+      return file;
+    }
+
+    const optimizedName = file.name.replace(/\.[^.]+$/, "") + "-ocr.jpg";
+    return new File([blob], optimizedName, {
+      type: "image/jpeg",
+      lastModified: Date.now(),
+    });
+  } catch (_error) {
+    return file;
+  } finally {
+    URL.revokeObjectURL(objectUrl);
+  }
+}
+
 function contactToPayload() {
   return {
     actorId: requireActiveUserId(),
@@ -1080,7 +1140,8 @@ els.ocrForm.addEventListener("submit", async (event) => {
   }
 
   const formData = new FormData();
-  formData.append("cardImage", els.cardImage.files[0]);
+  const optimizedImage = await prepareOcrImage(els.cardImage.files[0]);
+  formData.append("cardImage", optimizedImage);
   const extractBtn = els.ocrForm.querySelector('button[type="submit"]');
   const originalLabel = extractBtn ? extractBtn.textContent : "";
   const ocrTimeoutMs = 30000;
