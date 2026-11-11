@@ -46,15 +46,19 @@ This app can run with plain JSON storage on Railway when you mount a persistent 
 
 If `DB_PATH` is not set, the app defaults to `data/db.json` in the project folder.
 
-## Deploy On Vercel (KV Storage)
+## Deploy On Vercel (GitHub JSON Storage)
 
-Use this path if you want to stay on Vercel and avoid database/certificate setup.
+Use this path if you want to stay on Vercel without Redis/KV.
 
 1. Import/deploy this repository in Vercel.
-2. In your Vercel project, open `Storage` and add/connect `KV` (Upstash Redis).
-3. Redeploy the project.
+2. Set `GITHUB_STORAGE_TOKEN` to a GitHub token that can read/write this repo.
+3. Optional overrides:
+   - `GITHUB_STORAGE_REPO` (default `JELD-WENCanada/PLM-CMS`)
+   - `GITHUB_STORAGE_BRANCH` (default `plm-cms-data`)
+   - `GITHUB_STORAGE_PATH` (default `data/db.json`)
+4. Redeploy the project.
 
-When KV env vars are present, the app uses KV automatically for persistent storage.
+When `GITHUB_STORAGE_TOKEN` is present, the app persists state to the dedicated `plm-cms-data` branch so production writes do not redeploy the app from `main`.
 
 ## API Overview
 
