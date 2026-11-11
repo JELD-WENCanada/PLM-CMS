@@ -29,9 +29,9 @@
       "email": "",
       "phone": "",
       "notes": "",
-      "updatedAt": "2026-11-11T20:00:51.572Z",
-      "passwordHash": "",
-      "passwordSalt": ""
+      "updatedAt": "2026-11-11T20:02:12.420Z",
+      "passwordHash": "066a3227be11a77fa44523670f18c8869350e0f5bc061b7f0c2fec2196687f1848a5276f4f9f4cacc783213d217ff35740671539765270281af7ed2709c170ee",
+      "passwordSalt": "a07b8d2ad6f8e40d2ba98e389d9dce43"
     }
   ],
   "contacts": [
