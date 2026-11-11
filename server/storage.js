@@ -1,10 +1,12 @@
 const fs = require("fs/promises");
 const path = require("path");
 const crypto = require("crypto");
-const { kv } = require("@vercel/kv");
 
 const DB_PATH = process.env.DB_PATH || path.join(__dirname, "..", "data", "db.json");
-const KV_STATE_KEY = process.env.KV_STATE_KEY || "plm-cms:state";
+const GITHUB_STORAGE_REPO =
+  process.env.GITHUB_STORAGE_REPO || "JELD-WENCanada/PLM-CMS";
+const GITHUB_STORAGE_BRANCH = process.env.GITHUB_STORAGE_BRANCH || "plm-cms-data";
+const GITHUB_STORAGE_PATH = process.env.GITHUB_STORAGE_PATH || "data/db.json";
 const DEFAULT_USERS = [
   {
     id: "jeffrey-pigeon",
@@ -143,8 +145,17 @@ function isReadOnlyFsError(error) {
   return error && ["EROFS", "EPERM", "EACCES"].includes(error.code);
 }
 
-function shouldUseKvStorage() {
-  return Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+function getGithubStorageToken() {
+  return (
+    process.env.GITHUB_STORAGE_TOKEN ||
+    process.env.GITHUB_TOKEN ||
+    process.env.GH_TOKEN ||
+    ""
+  ).trim();
+}
+
+function shouldUseGithubStorage() {
+  return Boolean(getGithubStorageToken());
 }
 
 async function readSeedDb() {
@@ -168,16 +179,117 @@ function normalizeDb(parsed) {
   return parsed;
 }
 
+async function githubApi(pathname, options = {}) {
+  const token = getGithubStorageToken();
+  if (!token) {
+    throw new Error("GitHub storage token is not configured");
+  }
+
+  const response = await fetch(`https://api.github.com${pathname}`, {
+    ...options,
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${token}`,
+      "User-Agent": "plm-cms-storage",
+      "X-GitHub-Api-Version": "2022-11-28",
+      ...(options.body ? { "Content-Type": "application/json" } : {}),
+      ...(options.headers || {}),
+    },
+  });
+
+  const text = await response.text();
+  let data = null;
+  if (text) {
+    try {
+      data = JSON.parse(text);
+    } catch (_error) {
+      data = null;
+    }
+  }
+
+  if (!response.ok) {
+    const message =
+      (data && (data.message || data.error)) ||
+      text ||
+      `GitHub API failed (${response.status})`;
+    const error = new Error(message);
+    error.status = response.status;
+    error.data = data;
+    throw error;
+  }
+
+  return data;
+}
+
+async function readDbFromGithub() {
+  const encodedPath = GITHUB_STORAGE_PATH.split("/")
+    .map((part) => encodeURIComponent(part))
+    .join("/");
+  try {
+    const file = await githubApi(
+      `/repos/${GITHUB_STORAGE_REPO}/contents/${encodedPath}?ref=${encodeURIComponent(
+        GITHUB_STORAGE_BRANCH
+      )}`
+    );
+    if (!file || !file.content) {
+      return { db: normalizeDb(await readSeedDb()), sha: null };
+    }
+    const raw = Buffer.from(file.content, "base64").toString("utf-8");
+    return { db: normalizeDb(JSON.parse(raw)), sha: file.sha || null };
+  } catch (error) {
+    if (error.status === 404) {
+      return { db: normalizeDb(await readSeedDb()), sha: null };
+    }
+    throw new Error(
+      `GitHub storage read failed. ${error.message || "Check GITHUB_STORAGE_TOKEN."}`
+    );
+  }
+}
+
+async function writeDbToGithub(db, sha = null) {
+  const encodedPath = GITHUB_STORAGE_PATH.split("/")
+    .map((part) => encodeURIComponent(part))
+    .join("/");
+  const content = Buffer.from(JSON.stringify(db, null, 2), "utf-8").toString(
+    "base64"
+  );
+  const payload = {
+    message: `Update PLM CMS data ${nowIso()}`,
+    content,
+    branch: GITHUB_STORAGE_BRANCH,
+  };
+  if (sha) {
+    payload.sha = sha;
+  }
+
+  try {
+    await githubApi(`/repos/${GITHUB_STORAGE_REPO}/contents/${encodedPath}`, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+    });
+  } catch (error) {
+    if (error.status === 409 || error.status === 422) {
+      const latest = await readDbFromGithub();
+      await githubApi(`/repos/${GITHUB_STORAGE_REPO}/contents/${encodedPath}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          ...payload,
+          sha: latest.sha,
+        }),
+      });
+      return;
+    }
+    throw new Error(
+      `GitHub storage write failed. ${error.message || "Check GITHUB_STORAGE_TOKEN."}`
+    );
+  }
+}
+
 async function readDb() {
   try {
-    if (shouldUseKvStorage()) {
-      const stored = await kv.get(KV_STATE_KEY);
-      if (!stored) {
-        const seed = normalizeDb(await readSeedDb());
-        await kv.set(KV_STATE_KEY, seed);
-        return seed;
-      }
-      return normalizeDb(stored);
+    if (shouldUseGithubStorage()) {
+      const { db } = await readDbFromGithub();
+      return db;
     }
 
     const parsed = JSON.parse(await fs.readFile(DB_PATH, "utf-8"));
@@ -191,13 +303,10 @@ async function readDb() {
 }
 
 async function writeDb(db) {
-  if (shouldUseKvStorage()) {
-    try {
-      await kv.set(KV_STATE_KEY, db);
-      return;
-    } catch (error) {
-      throw new Error(`KV write failed. ${error.message || "Check KV integration."}`);
-    }
+  if (shouldUseGithubStorage()) {
+    const latest = await readDbFromGithub();
+    await writeDbToGithub(db, latest.sha);
+    return;
   }
 
   try {
@@ -206,7 +315,7 @@ async function writeDb(db) {
     if (isReadOnlyFsError(error)) {
       throw new Error(
         process.env.VERCEL
-          ? "Storage is read-only. Connect Vercel KV to this project and redeploy."
+          ? "Storage is read-only. Set GITHUB_STORAGE_TOKEN on Vercel to enable persistent GitHub storage."
           : "Storage path is read-only. Set DB_PATH to a writable location (for example a Railway volume mount)."
       );
     }
